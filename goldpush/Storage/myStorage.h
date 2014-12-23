@@ -12,7 +12,12 @@
 
 + (myStorage *)shareInstance;
 
+-(void)setDefaultValue;
+
 -(void)saveUserID:(NSString *)struid;
 -(NSString *)getUserID;
 
+//regist
+-(void)setRegitsStates:(BOOL)bSuccess;
+-(BOOL)registStates;
 @end

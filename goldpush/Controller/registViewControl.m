@@ -84,11 +84,14 @@
         [SVProgressHUD showWithStatus:@"正在注册。。。"];
         [[registHandler shareInstance] executeRegist:_regis
                                              success:^(id a){
+            
+                                                 [[myStorage shareInstance] setRegitsStates:YES];
             [SVProgressHUD showSuccessWithStatus:@"注册成功"];
             ViewController *view = [[ViewController alloc] init];
             [self.navigationController pushViewController:view animated:YES];
     }
                                               failed:^(id a){
+            [[myStorage shareInstance] setRegitsStates:NO];
             [SVProgressHUD showErrorWithStatus:@"注册失败"];
     }
          ];

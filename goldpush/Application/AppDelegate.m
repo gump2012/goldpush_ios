@@ -20,6 +20,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[myStorage shareInstance] setDefaultValue];
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         UIUserNotificationType types = UIUserNotificationTypeBadge                                                                                                                        | UIUserNotificationTypeSound |                                                                                            UIUserNotificationTypeAlert ;
         UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
@@ -49,8 +52,8 @@
             
         }
     }else{
-        NSString *str = [[myStorage shareInstance] getUserID];
-        if (str && [str length] > 0) {
+        BOOL bregist = [[myStorage shareInstance] registStates];
+        if (bregist) {
             ViewController *view = [[ViewController alloc] init];
             UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
             self.window.rootViewController = nai;

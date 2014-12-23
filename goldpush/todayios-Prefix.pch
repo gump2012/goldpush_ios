@@ -18,3 +18,4 @@
 #import "commondef.h"
 #import "baseRequest.h"
 #import "notificationdef.h"
+#import "myStorage.h"

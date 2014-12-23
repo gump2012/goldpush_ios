@@ -21,6 +21,12 @@ static myStorage * shareins = nil;
     return shareins;
 }
 
+-(void)setDefaultValue{
+    NSDictionary *defaultValues = [NSDictionary dictionaryWithObjectsAndKeys: @"", @"userid",
+                                   [NSNumber numberWithBool:NO],@"registstate",nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+}
+
 -(void)saveUserID:(NSString *)struid{
     [[NSUserDefaults standardUserDefaults] setObject:struid forKey:@"userid"];
 }
@@ -28,6 +34,15 @@ static myStorage * shareins = nil;
 -(NSString *)getUserID{
     NSString *str = [[NSUserDefaults standardUserDefaults] stringForKey:@"userid"];
     return str;
+}
+
+-(void)setRegitsStates:(BOOL)bSuccess{
+    [[NSUserDefaults standardUserDefaults] setBool:bSuccess forKey:@"registstate"];
+}
+
+-(BOOL)registStates{
+    BOOL bsuccess = [[NSUserDefaults standardUserDefaults] boolForKey:@"registstate"];
+    return bsuccess;
 }
 
 @end
