@@ -18,13 +18,17 @@
 -(id)init{
     self = [super init];
     if (self) {
-        _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 40.0f)];
+        _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 80.0f)];
         _messageLabel.textColor = [UIColor blackColor];
         _messageLabel.font = [UIFont systemFontOfSize:14.0f];
         _messageLabel.numberOfLines = 0;
-        _sureBtn = [[UIButton alloc] initWithFrame:CGRectMake(150.0f, 420.0f, 60.0f,60.0f)];
+        _messageLabel.textAlignment = NSTextAlignmentCenter;
+        _sureBtn = [[UIButton alloc] initWithFrame:CGRectMake(130.0f, 280.0f, 60.0f, 40.0f)];
         [_sureBtn setTitle:@"确定" forState:UIControlStateNormal];
         [_sureBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_sureBtn.layer setMasksToBounds:YES];
+        [_sureBtn.layer setCornerRadius:10.0];
+        _sureBtn.backgroundColor = [UIColor greenColor];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(getPushWhenRun:)
