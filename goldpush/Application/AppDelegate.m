@@ -110,6 +110,10 @@
 }
 -(void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {NSLog(@"注册失败，无法获取设备ID, 具体错误: %@", error);
+    NSString *str = [NSString stringWithFormat:@"注册失败，无法获取设备ID, 具体错误: %@", error];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    [alert addButtonWithTitle:@"Yes"];
+    [alert show];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_GETUIDFAIL
                                                         object:self];}
 
