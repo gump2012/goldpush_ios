@@ -75,6 +75,8 @@
     [super viewDidLoad];
     [self.view addSubview:_messageLabel];
     [self.view addSubview:_sureBtn];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
