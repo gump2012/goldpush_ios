@@ -13,9 +13,6 @@ static registHandler * shareins = nil;
 
 @implementation registHandler
 
-@synthesize successblock = _successblock;
-@synthesize failblock = _failblock;
-
 + (registHandler *)shareInstance
 {
     if (nil == shareins)

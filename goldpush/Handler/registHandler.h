@@ -11,8 +11,7 @@
 
 @interface registHandler : BaseHandler
 {
-    SuccessBlock _successblock;
-    FailedBlock _failblock;
+    
 }
 
 + (registHandler *)shareInstance;
@@ -21,7 +20,6 @@
                          success:(SuccessBlock)success
                           failed:(FailedBlock)failed;
 
-@property(nonatomic,copy) SuccessBlock successblock;
-@property(nonatomic,copy) FailedBlock failblock;
+
 
 @end

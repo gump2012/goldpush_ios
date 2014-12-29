@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 #import "pushHandler.h"
-
+#import "confirmStateHandler.h"
+#import "stateModel.h"
+#import "SVProgressHUD.h"
 @interface ViewController ()
 
 @end
@@ -29,6 +31,7 @@
         [_sureBtn.layer setMasksToBounds:YES];
         [_sureBtn.layer setCornerRadius:10.0];
         _sureBtn.backgroundColor = [UIColor greenColor];
+        [_sureBtn addTarget:self action:@selector(confirmStateClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(getPushWhenRun:)
@@ -51,6 +54,20 @@
             _messageLabel.text = stralert;
         }
     }
+    
+    NSString *strmid = [[pushHandler shareInstance].curPush objectForKey:@"mid"];
+    if (strmid) {
+        stateModel *state = [[stateModel alloc] init];
+        state.struid = [[myStorage shareInstance] getUserID];
+        state.strmid = strmid;
+        state.strstate = @"1";
+        [[confirmStateHandler shareInstance] executeRegist:state
+                                                   success:^(id a){
+                                                       NSLog(@"confirm state success");
+                                                   }failed:^(id a){
+                                                       NSLog(@"confirm state fail");
+                                                   }];
+    }
 }
 
 - (void) getUserProfileSuccess: (NSNotification*) aNotification
@@ -69,6 +86,20 @@
             _messageLabel.text = stralert;
         }
     }
+    
+    NSString *strmid = [[pushHandler shareInstance].curPush objectForKey:@"mid"];
+    if (strmid) {
+        stateModel *state = [[stateModel alloc] init];
+        state.struid = [[myStorage shareInstance] getUserID];
+        state.strmid = strmid;
+        state.strstate = @"1";
+        [[confirmStateHandler shareInstance] executeRegist:state
+    success:^(id a){
+        NSLog(@"confirm state success");
+    }failed:^(id a){
+         NSLog(@"confirm state fail");
+    }];
+    }
 }
 
 - (void)viewDidLoad {
@@ -83,6 +114,29 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)confirmStateClick:(id)sender{
+    NSString *strmid = [[pushHandler shareInstance].curPush objectForKey:@"mid"];
+    if (strmid) {
+        stateModel *state = [[stateModel alloc] init];
+        state.struid = [[myStorage shareInstance] getUserID];
+        state.strmid = strmid;
+        state.strstate = @"2";
+        [SVProgressHUD showWithStatus:@"正在确认..."];
+        [[confirmStateHandler shareInstance] executeRegist:state
+                                                   success:^(id a){
+                                                       [SVProgressHUD showSuccessWithStatus:@"确认成功"];
+                                                       NSLog(@"confirm state success");
+                                                   }failed:^(id a){
+                                                       [SVProgressHUD showErrorWithStatus:@"确认失败"];
+                                                       NSLog(@"confirm state fail");
+                                                   }];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end

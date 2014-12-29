@@ -9,7 +9,7 @@
 #ifndef todayios_commondef_h
 #define todayios_commondef_h
 
-#define MAIN_DOMAIN @"http://josnotice.nat123.net/jos/Users/userRegistration"
+#define MAIN_DOMAIN @"http://josnotice.nat123.net/jos/"
 #define MAIN_PORT   @"10080"
 #define LOCAL_DOMAIN @"http://127.0.0.1"
 //#define LATEST_DOMAIN @"http://latest.toupai360.com"

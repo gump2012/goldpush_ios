@@ -48,6 +48,11 @@
 		339A327A1A3D7A7E00E0316A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A32781A3D7A7E00E0316A /* SVProgressHUD.m */; };
 		339A327D1A3D842400E0316A /* registModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A327C1A3D842400E0316A /* registModel.m */; };
 		339A32801A3D884200E0316A /* registHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A327F1A3D884200E0316A /* registHandler.m */; };
+		6F2069E91A51107600B398C6 /* dudu.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6F2069E71A51107600B398C6 /* dudu.m4a */; };
+		6F2069EA1A51107600B398C6 /* ringing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6F2069E81A51107600B398C6 /* ringing.m4a */; };
+		6F2069ED1A5127F900B398C6 /* confirmState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2069EC1A5127F900B398C6 /* confirmState.m */; };
+		6F2069F01A512B7800B398C6 /* confirmStateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2069EF1A512B7800B398C6 /* confirmStateHandler.m */; };
+		6F2069F31A512CD500B398C6 /* stateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2069F21A512CD500B398C6 /* stateModel.m */; };
 		6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163131A47B80C005A03D3 /* pushHandler.m */; };
 		6F6163171A47BE08005A03D3 /* myStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163161A47BE08005A03D3 /* myStorage.m */; };
 /* End PBXBuildFile section */
@@ -150,6 +155,14 @@
 		339A327C1A3D842400E0316A /* registModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = registModel.m; path = Model/registModel.m; sourceTree = "<group>"; };
 		339A327E1A3D884200E0316A /* registHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = registHandler.h; path = Handler/registHandler.h; sourceTree = "<group>"; };
 		339A327F1A3D884200E0316A /* registHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = registHandler.m; path = Handler/registHandler.m; sourceTree = "<group>"; };
+		6F2069E71A51107600B398C6 /* dudu.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = dudu.m4a; path = resources/sound/dudu.m4a; sourceTree = "<group>"; };
+		6F2069E81A51107600B398C6 /* ringing.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = ringing.m4a; path = resources/sound/ringing.m4a; sourceTree = "<group>"; };
+		6F2069EB1A5127F900B398C6 /* confirmState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmState.h; path = Network/confirmState.h; sourceTree = "<group>"; };
+		6F2069EC1A5127F900B398C6 /* confirmState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmState.m; path = Network/confirmState.m; sourceTree = "<group>"; };
+		6F2069EE1A512B7800B398C6 /* confirmStateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmStateHandler.h; path = Handler/confirmStateHandler.h; sourceTree = "<group>"; };
+		6F2069EF1A512B7800B398C6 /* confirmStateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmStateHandler.m; path = Handler/confirmStateHandler.m; sourceTree = "<group>"; };
+		6F2069F11A512CD500B398C6 /* stateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stateModel.h; path = Model/stateModel.h; sourceTree = "<group>"; };
+		6F2069F21A512CD500B398C6 /* stateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = stateModel.m; path = Model/stateModel.m; sourceTree = "<group>"; };
 		6F6163121A47B80C005A03D3 /* pushHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pushHandler.h; path = Handler/pushHandler.h; sourceTree = "<group>"; };
 		6F6163131A47B80C005A03D3 /* pushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pushHandler.m; path = Handler/pushHandler.m; sourceTree = "<group>"; };
 		6F6163151A47BE08005A03D3 /* myStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myStorage.h; path = Storage/myStorage.h; sourceTree = "<group>"; };
@@ -289,6 +302,8 @@
 			children = (
 				339A327B1A3D842400E0316A /* registModel.h */,
 				339A327C1A3D842400E0316A /* registModel.m */,
+				6F2069F11A512CD500B398C6 /* stateModel.h */,
+				6F2069F21A512CD500B398C6 /* stateModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,6 +315,8 @@
 				339A327F1A3D884200E0316A /* registHandler.m */,
 				6F6163121A47B80C005A03D3 /* pushHandler.h */,
 				6F6163131A47B80C005A03D3 /* pushHandler.m */,
+				6F2069EE1A512B7800B398C6 /* confirmStateHandler.h */,
+				6F2069EF1A512B7800B398C6 /* confirmStateHandler.m */,
 			);
 			name = Handler;
 			sourceTree = "<group>";
@@ -323,6 +340,8 @@
 				338499F01A3D1B0900AC121E /* asihttp */,
 				339A32711A3D73E900E0316A /* regist.h */,
 				339A32721A3D73E900E0316A /* regist.m */,
+				6F2069EB1A5127F900B398C6 /* confirmState.h */,
+				6F2069EC1A5127F900B398C6 /* confirmState.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -353,6 +372,7 @@
 		335FDF3A1A3BE83D002BDA05 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6F2069E61A51106300B398C6 /* sound */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -469,6 +489,15 @@
 			path = Utils/SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		6F2069E61A51106300B398C6 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				6F2069E71A51107600B398C6 /* dudu.m4a */,
+				6F2069E81A51107600B398C6 /* ringing.m4a */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -550,6 +579,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				335423161A285E0C00AFA31F /* Images.xcassets in Resources */,
+				6F2069EA1A51107600B398C6 /* ringing.m4a in Resources */,
+				6F2069E91A51107600B398C6 /* dudu.m4a in Resources */,
 				339A32791A3D7A7E00E0316A /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,8 +628,11 @@
 				33849A341A3D1B0900AC121E /* ASICloudFilesRequest.m in Sources */,
 				33849A3D1A3D1B4000AC121E /* baseRequest.m in Sources */,
 				33849A391A3D1B0900AC121E /* ASIS3Request.m in Sources */,
+				6F2069F01A512B7800B398C6 /* confirmStateHandler.m in Sources */,
 				33849A2B1A3D1B0900AC121E /* ASIInputStream.m in Sources */,
+				6F2069ED1A5127F900B398C6 /* confirmState.m in Sources */,
 				33849A2C1A3D1B0900AC121E /* ASINetworkQueue.m in Sources */,
+				6F2069F31A512CD500B398C6 /* stateModel.m in Sources */,
 				33849A2A1A3D1B0900AC121E /* ASIHTTPRequest.m in Sources */,
 				33849A301A3D1B0900AC121E /* ASICloudFilesContainerRequest.m in Sources */,
 				33849A281A3D1B0900AC121E /* ASIDownloadCache.m in Sources */,
@@ -722,7 +756,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708d87ef-cbbf-41a3-89ed-84da389b328f";
+				PROVISIONING_PROFILE = "a969f2cd-1388-4d1f-88df-3904e20b842f";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -745,7 +779,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708d87ef-cbbf-41a3-89ed-84da389b328f";
+				PROVISIONING_PROFILE = "a969f2cd-1388-4d1f-88df-3904e20b842f";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

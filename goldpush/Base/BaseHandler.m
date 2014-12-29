@@ -10,4 +10,11 @@
 
 @implementation BaseHandler
 
+@synthesize successblock = _successblock;
+@synthesize failblock = _failblock;
+
++ (NSString *)requestUrlWithPath:(NSString *)path{
+    return @"";
+}
+
 @end
