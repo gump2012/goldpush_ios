@@ -35,4 +35,9 @@
     return str;
 }
 
+-(NSString *)getTestDoMain{
+    NSString *str = [NSString stringWithFormat:@"%@",TEXT_DOMAIN];
+    return str;
+}
+
 @end

@@ -23,7 +23,7 @@ static confirmState * shareins = nil;
 }
 
 -(void)requestByUserid:(NSString *)struid withMessageID:(NSString *)strmid withState:(NSString *)strState{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@Notice/NoticeBack?userid=%@&msgid=%@&state=%@",[self getDoMain],
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@Notice/NoticeBack?userid=%@&msgid=%@&state=%@",[self getTestDoMain],
                                        struid,
                                        strmid,
                                        strState]];

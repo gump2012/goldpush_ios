@@ -13,5 +13,6 @@
 -(void)request;
 -(NSString *)getDefaultValue;
 -(NSString *)getDoMain;
+-(NSString *)getTestDoMain;
 
 @end
