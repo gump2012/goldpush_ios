@@ -55,6 +55,7 @@
 		6F2B2A321A64F7930026CFDC /* messageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A311A64F7930026CFDC /* messageModel.m */; };
 		6F2B2A351A64FA520026CFDC /* db.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A341A64FA520026CFDC /* db.m */; };
 		6F2B2A381A6504D90026CFDC /* messagedb.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A371A6504D90026CFDC /* messagedb.m */; };
+		6F2B2A3B1A6520C90026CFDC /* messageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */; };
 		6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163131A47B80C005A03D3 /* pushHandler.m */; };
 		6F6163171A47BE08005A03D3 /* myStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163161A47BE08005A03D3 /* myStorage.m */; };
 		CAAE283079962BA5BE55BD71 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB199E6346C1EA247319435B /* libPods.a */; };
@@ -171,6 +172,8 @@
 		6F2B2A341A64FA520026CFDC /* db.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = db.m; path = Database/db.m; sourceTree = "<group>"; };
 		6F2B2A361A6504D90026CFDC /* messagedb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messagedb.h; path = Database/messagedb.h; sourceTree = "<group>"; };
 		6F2B2A371A6504D90026CFDC /* messagedb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messagedb.m; path = Database/messagedb.m; sourceTree = "<group>"; };
+		6F2B2A391A6520C90026CFDC /* messageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messageListViewController.h; path = Controller/messageListViewController.h; sourceTree = "<group>"; };
+		6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messageListViewController.m; path = Controller/messageListViewController.m; sourceTree = "<group>"; };
 		6F6163121A47B80C005A03D3 /* pushHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pushHandler.h; path = Handler/pushHandler.h; sourceTree = "<group>"; };
 		6F6163131A47B80C005A03D3 /* pushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pushHandler.m; path = Handler/pushHandler.m; sourceTree = "<group>"; };
 		6F6163151A47BE08005A03D3 /* myStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myStorage.h; path = Storage/myStorage.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				335FDF3F1A3BEA96002BDA05 /* registViewControl.m */,
 				335FDF401A3BEA96002BDA05 /* ViewController.h */,
 				335FDF411A3BEA96002BDA05 /* ViewController.m */,
+				6F2B2A391A6520C90026CFDC /* messageListViewController.h */,
+				6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 		335FDF321A3BE708002BDA05 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6F2B2A3C1A6520F40026CFDC /* messageList */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -515,6 +521,13 @@
 			name = sound;
 			sourceTree = "<group>";
 		};
+		6F2B2A3C1A6520F40026CFDC /* messageList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = messageList;
+			sourceTree = "<group>";
+		};
 		87738480528D089FBA82A072 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +700,7 @@
 				339A32701A3D39AB00E0316A /* BaseHandler.m in Sources */,
 				6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */,
 				6F6163171A47BE08005A03D3 /* myStorage.m in Sources */,
+				6F2B2A3B1A6520C90026CFDC /* messageListViewController.m in Sources */,
 				339A32731A3D73E900E0316A /* regist.m in Sources */,
 				33849A291A3D1B0900AC121E /* ASIFormDataRequest.m in Sources */,
 				33849A271A3D1B0900AC121E /* ASIDataDecompressor.m in Sources */,
