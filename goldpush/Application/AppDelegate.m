@@ -11,6 +11,7 @@
 #import "registViewControl.h"
 #import "pushHandler.h"
 #import "myStorage.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[myStorage shareInstance] setDefaultValue];
+    [MobClick startWithAppkey:@"54b4dafefd98c588a10001ce" reportPolicy:REALTIME channelId:@"test"];
+    
+    [MobClick checkUpdate];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         UIUserNotificationType types = UIUserNotificationTypeBadge                                                                                                                        | UIUserNotificationTypeSound |                                                                                            UIUserNotificationTypeAlert ;
@@ -81,6 +85,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [MobClick checkUpdate];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
