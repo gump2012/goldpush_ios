@@ -5,13 +5,16 @@ PODS:
   - FMDB/standard (2.4):
     - FMDB/common
   - RegexKitLite (4.0)
+  - UMeng (2.2.1)
 
 DEPENDENCIES:
   - FMDB (~> 2.4.0)
   - RegexKitLite
+  - UMeng (~> 2.2.1)
 
 SPEC CHECKSUMS:
   FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
+  UMeng: e5b6c6a06215aeba33cb59159341ab3d6d292935
 
 COCOAPODS: 0.35.0
