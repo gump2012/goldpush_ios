@@ -8,3 +8,8 @@ goldpush.xcodeproj/project.xcworkspace/xcuserdata/gump.xcuserdatad/UserInterface
 Pods/FMDB/LICENSE.txt
 # pod Pods/
 Pods/
+Build/
+
+goldpush.xcworkspace/xcuserdata/gump.xcuserdatad/UserInterfaceState.xcuserstate
+
+goldpush.xcworkspace/xcuserdata/gump.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
