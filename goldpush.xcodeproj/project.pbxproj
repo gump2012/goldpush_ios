@@ -41,7 +41,6 @@
 		33849A4A1A3D244100AC121E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33849A491A3D244100AC121E /* CFNetwork.framework */; };
 		33849A4C1A3D24AF00AC121E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 33849A4B1A3D24AF00AC121E /* libz.dylib */; };
 		339A326A1A3D366C00E0316A /* httpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A32691A3D366C00E0316A /* httpManager.m */; };
-		339A326D1A3D388200E0316A /* cartUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A326C1A3D388200E0316A /* cartUpdate.m */; };
 		339A32701A3D39AB00E0316A /* BaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A326F1A3D39AB00E0316A /* BaseHandler.m */; };
 		339A32731A3D73E900E0316A /* regist.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A32721A3D73E900E0316A /* regist.m */; };
 		339A32791A3D7A7E00E0316A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 339A32761A3D7A7E00E0316A /* SVProgressHUD.bundle */; };
@@ -141,8 +140,6 @@
 		33849A4B1A3D24AF00AC121E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		339A32681A3D366C00E0316A /* httpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = httpManager.h; path = Network/httpManager.h; sourceTree = "<group>"; };
 		339A32691A3D366C00E0316A /* httpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = httpManager.m; path = Network/httpManager.m; sourceTree = "<group>"; };
-		339A326B1A3D388200E0316A /* cartUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cartUpdate.h; path = Network/cartUpdate.h; sourceTree = "<group>"; };
-		339A326C1A3D388200E0316A /* cartUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cartUpdate.m; path = Network/cartUpdate.m; sourceTree = "<group>"; };
 		339A326E1A3D39AB00E0316A /* BaseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseHandler.h; path = Base/BaseHandler.h; sourceTree = "<group>"; };
 		339A326F1A3D39AB00E0316A /* BaseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseHandler.m; path = Base/BaseHandler.m; sourceTree = "<group>"; };
 		339A32711A3D73E900E0316A /* regist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = regist.h; path = Network/regist.h; sourceTree = "<group>"; };
@@ -333,8 +330,6 @@
 		335FDF361A3BE76B002BDA05 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				339A326B1A3D388200E0316A /* cartUpdate.h */,
-				339A326C1A3D388200E0316A /* cartUpdate.m */,
 				339A32681A3D366C00E0316A /* httpManager.h */,
 				339A32691A3D366C00E0316A /* httpManager.m */,
 				338499F01A3D1B0900AC121E /* asihttp */,
@@ -605,7 +600,6 @@
 				33849A381A3D1B0900AC121E /* ASIS3ObjectRequest.m in Sources */,
 				335FDF3D1A3BEA44002BDA05 /* AppDelegate.m in Sources */,
 				335FDF421A3BEA96002BDA05 /* registViewControl.m in Sources */,
-				339A326D1A3D388200E0316A /* cartUpdate.m in Sources */,
 				33849A351A3D1B0900AC121E /* ASIS3Bucket.m in Sources */,
 				33849A2E1A3D1B0900AC121E /* ASICloudFilesCDNRequest.m in Sources */,
 				339A327D1A3D842400E0316A /* registModel.m in Sources */,

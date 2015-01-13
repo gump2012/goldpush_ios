@@ -49,7 +49,7 @@
 }
 
 -(void)getUserProfileSuccess:(NSNotification*) aNotification{
-    [SVProgressHUD showSuccessWithStatus:@"成功获得设备id"];
+    //[SVProgressHUD showSuccessWithStatus:@"成功获得设备id"];
     
     NSDictionary *nameDictionary = [aNotification userInfo];
     NSString *strname = [nameDictionary objectForKey:@"name"];
@@ -59,7 +59,7 @@
 }
 
 -(void)getUserProfileFail:(NSNotification*) aNotification{
-    [SVProgressHUD showErrorWithStatus:@"获取设备id失败"];
+    [SVProgressHUD showErrorWithStatus:@"网络故障，请检查您的网络"];
     
     _regis.userid = @"";
     
@@ -70,7 +70,7 @@
     [self.view addSubview:_phonetext];
     [self.view addSubview:_surebtn];
     
-    [SVProgressHUD showWithStatus:@"正在获得设备id"];
+    //[SVProgressHUD showWithStatus:@"正在获得设备id"];
 }
 
 -(void)registerClick:(id)sender{
