@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
 #import "registViewControl.h"
 #import "pushHandler.h"
 #import "myStorage.h"
@@ -51,7 +50,7 @@
             [[pushHandler shareInstance].curPush setDictionary:pushNotificationKey];
             
             //这里定义自己的处理方式
-            ViewController *view = [[ViewController alloc] init];
+            messageListViewController *view = [[messageListViewController alloc] init];
             UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
             self.window.rootViewController = nai;
             
