@@ -115,4 +115,19 @@ static messageHandler * shareins = nil;
     [[getLastMessage shareInstance] requestWithCount:10 withUID:[[myStorage shareInstance] getUserID]];
 }
 
+-(void)updateMessageWithMsg{
+    if (self.sureMsg) {
+        self.sureMsg.state = 1;
+        [[messagedb shareInstance] updateMsg:self.sureMsg];
+        
+        for (int i = 0; i < _messageArr.count; ++i) {
+            messageModel *msg = [_messageArr objectAtIndex:i];
+            if (msg.mid == self.sureMsg.mid) {
+                msg.state = 1;
+                break;
+            }
+        }
+    }
+}
+
 @end

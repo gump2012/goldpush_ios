@@ -66,7 +66,7 @@ static messagedb * shareins = nil;
     if ([rs next]){
         isUpdate  = YES;
         
-        [database executeUpdate:@"UPDATE User SET message = ? ,  state = ? , deviceid = ? WHERE mid = ? ",message.message,
+        [database executeUpdate:@"UPDATE message SET message = ? ,  state = ? , deviceid = ? WHERE mid = ? ",message.message,
          [NSNumber numberWithInt:message.state],
          message.deviceid,
          message.mid];

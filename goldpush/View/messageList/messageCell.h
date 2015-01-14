@@ -20,6 +20,8 @@
     messageModel *_myMsg;
 }
 
+@property(nonatomic,copy) void (^sureblock)(id a);
+
 -(void)refreshWithMessage:(messageModel *)message;
 
 @end

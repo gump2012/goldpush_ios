@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class messageModel;
+
 @interface ViewController : UIViewController
 {
     UILabel *_messageLabel;
     UIButton *_sureBtn;
+    messageModel *_myMsg;
+    UILabel *_sureLabel;
 }
+
+@property(nonatomic,strong) messageModel *myMsg;
 
 @end
 

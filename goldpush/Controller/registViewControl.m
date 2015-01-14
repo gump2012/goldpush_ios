@@ -10,7 +10,7 @@
 #import "SVProgressHUD.h"
 #import "registModel.h"
 #import "registHandler.h"
-#import "ViewController.h"
+#import "messageListViewController.h"
 
 @implementation registViewControl
 
@@ -87,7 +87,7 @@
             
                                                  [[myStorage shareInstance] setRegitsStates:YES];
             [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-            ViewController *view = [[ViewController alloc] init];
+            messageListViewController *view = [[messageListViewController alloc] init];
             [self.navigationController pushViewController:view animated:YES];
     }
                                               failed:^(id a){

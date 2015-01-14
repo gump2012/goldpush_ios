@@ -8,6 +8,7 @@
 
 #import "messageCell.h"
 #import "messageModel.h"
+#import "messageHandler.h"
 
 @implementation messageCell
 
@@ -28,11 +29,13 @@
         [_sureBtn addTarget:self action:@selector(sureClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_sureBtn];
         
-        _sureLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 10.0f, 10.0f, 80.0f, 40.0f)];
+        _sureLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90.0f, 10.0f, 80.0f, 40.0f)];
         _sureLabel.adjustsFontSizeToFitWidth = YES;
         _sureLabel.numberOfLines = 0;
         _sureLabel.text = @"已确认";
         [self.contentView addSubview:_sureLabel];
+        self.sureblock = nil;
+        _myMsg = nil;
     }
     return self;
 }
@@ -42,6 +45,7 @@
 }
 
 -(void)refreshWithMessage:(messageModel *)message{
+    _myMsg = message;
     _msgLabel.text = message.message;
     if (message.state == 0) {
         _sureLabel.hidden = YES;
@@ -53,7 +57,10 @@
 }
 
 -(void)sureClick:(id)sender{
-    
+    [messageHandler shareInstance].sureMsg = _myMsg;
+    if (self.sureblock) {
+        self.sureblock(self);
+    }
 }
 
 @end

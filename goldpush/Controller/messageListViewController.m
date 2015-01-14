@@ -9,6 +9,11 @@
 #import "messageListViewController.h"
 #import "messageHandler.h"
 #import "messageCell.h"
+#import "SVProgressHUD.h"
+#import "stateModel.h"
+#import "messageModel.h"
+#import "confirmStateHandler.h"
+#import "ViewController.h"
 
 @interface messageListViewController ()
 
@@ -74,6 +79,10 @@
     messageCell *cell = (messageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[messageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        cell.sureblock = ^(id a){
+            [self sureClick:a];
+        };
     }
     
     if (indexPath.row < [messageHandler shareInstance].messageArr.count) {
@@ -88,12 +97,41 @@
 {
     return 1;
 }
+
+-(void)sureClick:(id)sender{
+    if ([messageHandler shareInstance].sureMsg) {
+        [SVProgressHUD showWithStatus:@"正在确认..."];
+        
+        stateModel *state = [[stateModel alloc] init];
+        state.struid = [[myStorage shareInstance] getUserID];
+        state.strmid = [messageHandler shareInstance].sureMsg.message;
+        state.strstate = @"1";
+        [[confirmStateHandler shareInstance] executeRegist:state
+                                                   success:^(id a){
+                                                       [SVProgressHUD showSuccessWithStatus:@"确认成功!"];
+                                                       
+                                                       [[messageHandler shareInstance] updateMessageWithMsg];
+                                                       [_tableview reloadData];
+                                                   }failed:^(id a){
+                                                       [SVProgressHUD showErrorWithStatus:@"确认失败"];
+                                                   }];
+    }
+}
+
 #pragma mark -------------------tableview delegate----------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return MSG_CELL_H;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.row < [messageHandler shareInstance].messageArr.count) {
+        messageModel *message = [messageHandler shareInstance].messageArr[indexPath.row];
+        if (message) {
+            ViewController *view = [[ViewController alloc] init];
+            view.myMsg = message;
+            
+            [self.navigationController pushViewController:view animated:YES];
+        }
+    }
 }
 @end
