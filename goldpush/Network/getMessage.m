@@ -24,10 +24,13 @@ static getMessage * shareins = nil;
 }
 
 -(void)requestWithMessage:(messageModel *)message{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?mid=%@\
-&phone=%@\
-&message=%@\
+    NSString *str = [NSString stringWithFormat:@"%@receivemsg?mid=%@&phone=%@&message=%@\
 &state=1&device=ios",
+                     [self getPushDoMain],
+                     message.mid,
+                     message.deviceid,
+                     message.message];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@receivemsg?mid=%@&phone=%@&message=%@&state=1&device=ios",
 [self getPushDoMain],
 message.mid,
 message.deviceid,

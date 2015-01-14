@@ -48,7 +48,7 @@ static messagedb * shareins = nil;
     if (![rs next]){
         isSave  = YES;
         
-        [database executeUpdate:@"INSERT INTO message (mid,state,message,deviece) VALUES (?,?,?,?)",message.mid,
+        [database executeUpdate:@"INSERT INTO message (mid,state,message,deviceid) VALUES (?,?,?,?)",message.mid,
          [NSNumber numberWithInt:message.state],
          message.message,
          message.deviceid];

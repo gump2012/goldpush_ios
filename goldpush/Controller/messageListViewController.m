@@ -8,6 +8,7 @@
 
 #import "messageListViewController.h"
 #import "messageHandler.h"
+#import "messageCell.h"
 
 @interface messageListViewController ()
 
@@ -60,8 +61,30 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
+    static NSString *CellIdentifier = @"messageCell";
+    messageCell *cell = (messageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[messageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if (indexPath.row < [messageHandler shareInstance].messageArr.count) {
+        messageModel *message = [messageHandler shareInstance].messageArr[indexPath.row];
+        [cell refreshWithMessage:message];
+    }
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 #pragma mark -------------------tableview delegate----------------------
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return MSG_CELL_H;
+}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 @end

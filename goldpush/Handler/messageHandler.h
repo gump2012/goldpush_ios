@@ -20,5 +20,6 @@
 - (void)executeMessage:(messageModel *)message
               success:(SuccessBlock)success
                failed:(FailedBlock)failed;
+-(messageModel *)getMessageWithPush:(NSDictionary *)pushdic;
 
 @end

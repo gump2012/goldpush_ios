@@ -12,6 +12,9 @@
 #import "myStorage.h"
 #import "MobClick.h"
 #import "messageListViewController.h"
+#import "messageModel.h"
+#import "messageHandler.h"
+#import "db.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +29,8 @@
     [MobClick startWithAppkey:@"54b4dafefd98c588a10001ce" reportPolicy:REALTIME channelId:@"test"];
     
     [MobClick checkUpdate];
+    
+    [[db shareInstance] creatdb];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         UIUserNotificationType types = UIUserNotificationTypeBadge                                                                                                                        | UIUserNotificationTypeSound |                                                                                            UIUserNotificationTypeAlert ;
@@ -48,6 +53,9 @@
             
             [[pushHandler shareInstance].curPush removeAllObjects];
             [[pushHandler shareInstance].curPush setDictionary:pushNotificationKey];
+            
+            messageModel *message = [[messageHandler shareInstance] getMessageWithPush:[pushHandler shareInstance].curPush];
+            [[messageHandler shareInstance] getMessage:message];
             
             //这里定义自己的处理方式
             messageListViewController *view = [[messageListViewController alloc] init];
@@ -141,6 +149,9 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo{
         //第三种情况
         //这里定义自己的处理方式
     }
+    
+    messageModel *message = [[messageHandler shareInstance] getMessageWithPush:[pushHandler shareInstance].curPush];
+    [[messageHandler shareInstance] getMessage:message];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_GETPUSHWHENRUN
                                                         object:self];
