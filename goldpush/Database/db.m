@@ -7,7 +7,7 @@
 //
 
 #import "db.h"
-
+#import "messagedb.h"
 
 static db * shareins = nil;
 
@@ -38,7 +38,11 @@ static db * shareins = nil;
 }
 
 -(void)creatdb{
-    [_mydb executeUpdate:@"CREATE TABLE IF NOT EXISTS message (mid text,state integer,message text,deviceid text)"];
+    [[messagedb shareInstance] creatDB];
+}
+
+-(void)initData{
+    [[messagedb shareInstance] initData];
 }
 
 @end

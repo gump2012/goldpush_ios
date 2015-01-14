@@ -30,11 +30,8 @@ static getMessage * shareins = nil;
                      message.mid,
                      message.deviceid,
                      message.message];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@receivemsg?mid=%@&phone=%@&message=%@&state=1&device=ios",
-[self getPushDoMain],
-message.mid,
-message.deviceid,
-message.message]];
+    str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:str];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
     [request setDelegate:self];

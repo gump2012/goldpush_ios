@@ -58,6 +58,7 @@
 		6F2B2A3B1A6520C90026CFDC /* messageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */; };
 		6F5829361A660DE5001B6225 /* getMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5829351A660DE5001B6225 /* getMessage.m */; };
 		6F5829391A663BD8001B6225 /* messageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5829381A663BD8001B6225 /* messageCell.m */; };
+		6F58293C1A6664A2001B6225 /* getLastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F58293B1A6664A2001B6225 /* getLastMessage.m */; };
 		6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163131A47B80C005A03D3 /* pushHandler.m */; };
 		6F6163171A47BE08005A03D3 /* myStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163161A47BE08005A03D3 /* myStorage.m */; };
 		CAAE283079962BA5BE55BD71 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB199E6346C1EA247319435B /* libPods.a */; };
@@ -180,6 +181,8 @@
 		6F5829351A660DE5001B6225 /* getMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getMessage.m; path = Network/getMessage.m; sourceTree = "<group>"; };
 		6F5829371A663BD8001B6225 /* messageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messageCell.h; path = View/messageList/messageCell.h; sourceTree = "<group>"; };
 		6F5829381A663BD8001B6225 /* messageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messageCell.m; path = View/messageList/messageCell.m; sourceTree = "<group>"; };
+		6F58293A1A6664A2001B6225 /* getLastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getLastMessage.h; path = Network/getLastMessage.h; sourceTree = "<group>"; };
+		6F58293B1A6664A2001B6225 /* getLastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getLastMessage.m; path = Network/getLastMessage.m; sourceTree = "<group>"; };
 		6F6163121A47B80C005A03D3 /* pushHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pushHandler.h; path = Handler/pushHandler.h; sourceTree = "<group>"; };
 		6F6163131A47B80C005A03D3 /* pushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pushHandler.m; path = Handler/pushHandler.m; sourceTree = "<group>"; };
 		6F6163151A47BE08005A03D3 /* myStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myStorage.h; path = Storage/myStorage.h; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 				6F2069EC1A5127F900B398C6 /* confirmState.m */,
 				6F5829341A660DE5001B6225 /* getMessage.h */,
 				6F5829351A660DE5001B6225 /* getMessage.m */,
+				6F58293A1A6664A2001B6225 /* getLastMessage.h */,
+				6F58293B1A6664A2001B6225 /* getLastMessage.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				33849A351A3D1B0900AC121E /* ASIS3Bucket.m in Sources */,
 				33849A2E1A3D1B0900AC121E /* ASICloudFilesCDNRequest.m in Sources */,
 				6F2B2A321A64F7930026CFDC /* messageModel.m in Sources */,
+				6F58293C1A6664A2001B6225 /* getLastMessage.m in Sources */,
 				339A327D1A3D842400E0316A /* registModel.m in Sources */,
 				33849A251A3D1B0900AC121E /* ASIAuthenticationDialog.m in Sources */,
 				33849A311A3D1B0900AC121E /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,

@@ -4,16 +4,19 @@ PODS:
   - FMDB/common (2.4)
   - FMDB/standard (2.4):
     - FMDB/common
+  - JSONKit (1.5pre)
   - RegexKitLite (4.0)
   - UMeng (2.2.1)
 
 DEPENDENCIES:
   - FMDB (~> 2.4.0)
+  - JSONKit (~> 1.5pre)
   - RegexKitLite
   - UMeng (~> 2.2.1)
 
 SPEC CHECKSUMS:
   FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
+  JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   UMeng: e5b6c6a06215aeba33cb59159341ab3d6d292935
 

@@ -14,7 +14,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width - 100.0f, 40.0f)];
+        _msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, [UIScreen mainScreen].bounds.size.width - 100.0f, 40.0f)];
         _msgLabel.adjustsFontSizeToFitWidth = YES;
         _msgLabel.numberOfLines = 0;
         [self.contentView addSubview:_msgLabel];

@@ -10,6 +10,7 @@
 #import "messagedb.h"
 #import "getMessage.h"
 #import "messageModel.h"
+#import "getLastMessage.h"
 
 static messageHandler * shareins = nil;
 
@@ -28,16 +29,18 @@ static messageHandler * shareins = nil;
     self = [super init];
     if (self) {
         _messageArr = [[NSMutableArray alloc] init];
+        _lastMsgArr = [[NSMutableArray alloc] init];
     }
     
     return self;
 }
 
 -(void)getMessage:(messageModel *)message{
-    //入库
-    [[messagedb shareInstance] saveMsg:message];
-    //入组
-    [_messageArr addObject:message];
+    //入库才能入组
+    if ([[messagedb shareInstance] saveMsg:message]) {
+        [_messageArr addObject:message];
+    }
+    
     //已接收
     [self executeMessage:message success:^(id obj) {
         NSLog(@"getMessage success");
@@ -75,6 +78,41 @@ static messageHandler * shareins = nil;
     message.state = 0;
     
     return message;
+}
+
+-(void)getNewMessage{
+    __block messageHandler *blockSelf = self;
+    _lastMsgSuccessblock = ^(id a){
+        NSLog(@"getNewMessage success");
+        for (int i = 0; i < blockSelf.lastMsgArr.count; ++i) {
+            NSDictionary *dic = blockSelf.lastMsgArr[i];
+            if (dic) {
+                messageModel *message = [[messageModel alloc] init];
+                NSString *str = [dic objectForKey:@"content"];
+                if (str) {
+                    message.message = str;
+                }
+                str = [dic objectForKey:@"id"];
+                if (str) {
+                    message.mid = str;
+                }
+                
+                message.deviceid = [[myStorage shareInstance] getUserID];
+                message.state = 0;
+                
+                [blockSelf getMessage:message];
+            }
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_GETLASTMSG
+                                                            object:blockSelf];
+    };
+    
+    _lastMsgFailblock = ^(id a){
+        NSLog(@"getNewMessage fail");
+    };
+    
+    [[getLastMessage shareInstance] requestWithCount:10 withUID:[[myStorage shareInstance] getUserID]];
 }
 
 @end

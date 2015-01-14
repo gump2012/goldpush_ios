@@ -29,6 +29,11 @@
                                                  selector:@selector(getPushWhenRun:)
                                                      name:NOTI_GETPUSHWHENRUN
                                                    object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(getLastMsg:)
+                                                     name:NOTI_GETLASTMSG
+                                                   object:nil];
     }
     return self;
 }
@@ -38,6 +43,10 @@
 }
 
 -(void)getPushWhenRun:(NSNotification*) aNotification{
+    [_tableview reloadData];
+}
+
+-(void)getLastMsg:(NSNotification*) aNotification{
     [_tableview reloadData];
 }
 

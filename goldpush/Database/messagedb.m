@@ -81,4 +81,9 @@ static messagedb * shareins = nil;
     [database executeUpdate:@"DELETE FROM message WHERE mid = ?",message.mid];
 }
 
+-(void)creatDB{
+     FMDatabase *database = [db shareInstance].mydb;
+    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS message (mid text,state integer,message text,deviceid text)"];
+}
+
 @end

@@ -13,6 +13,7 @@
 @interface messagedb : NSObject
 
 + (messagedb *)shareInstance;
+-(void)creatDB;
 -(void)initData;
 -(BOOL)saveMsg:(messageModel *)message;
 -(BOOL)updateMsg:(messageModel *)message;

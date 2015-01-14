@@ -31,6 +31,7 @@
     [MobClick checkUpdate];
     
     [[db shareInstance] creatdb];
+    [[db shareInstance] initData];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
         UIUserNotificationType types = UIUserNotificationTypeBadge                                                                                                                        | UIUserNotificationTypeSound |                                                                                            UIUserNotificationTypeAlert ;
@@ -66,6 +67,9 @@
     }else{
         BOOL bregist = [[myStorage shareInstance] registStates];
         if (bregist) {
+            
+            [[messageHandler shareInstance] getNewMessage];
+            
             messageListViewController *view = [[messageListViewController alloc] init];
             UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
             self.window.rootViewController = nai;
@@ -95,6 +99,7 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [MobClick checkUpdate];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [[messageHandler shareInstance] getNewMessage];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

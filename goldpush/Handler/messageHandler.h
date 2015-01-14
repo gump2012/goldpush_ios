@@ -15,11 +15,15 @@
 + (messageHandler *)shareInstance;
 
 @property(nonatomic,strong) NSMutableArray *messageArr;
+@property(nonatomic,copy) SuccessBlock lastMsgSuccessblock;
+@property(nonatomic,copy) FailedBlock lastMsgFailblock;
+@property(nonatomic,strong) NSMutableArray *lastMsgArr;
 
 -(void)getMessage:(messageModel *)message;
 - (void)executeMessage:(messageModel *)message
               success:(SuccessBlock)success
                failed:(FailedBlock)failed;
 -(messageModel *)getMessageWithPush:(NSDictionary *)pushdic;
+-(void)getNewMessage;
 
 @end

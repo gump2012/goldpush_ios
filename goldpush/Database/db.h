@@ -16,5 +16,6 @@
 @property(nonatomic,strong) FMDatabase *mydb;
 
 -(void)creatdb;
+-(void)initData;
 
 @end
