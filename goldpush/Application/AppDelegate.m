@@ -28,7 +28,7 @@
     [[myStorage shareInstance] setDefaultValue];
     [MobClick startWithAppkey:@"54b4dafefd98c588a10001ce" reportPolicy:REALTIME channelId:@"test"];
     
-    [MobClick checkUpdate];
+    //[MobClick checkUpdate];
     
     [[db shareInstance] creatdb];
     [[db shareInstance] initData];
@@ -97,7 +97,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [MobClick checkUpdate];
+    //[MobClick checkUpdate];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [[messageHandler shareInstance] getNewMessage];
 }

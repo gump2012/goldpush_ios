@@ -104,7 +104,7 @@
         
         stateModel *state = [[stateModel alloc] init];
         state.struid = [[myStorage shareInstance] getUserID];
-        state.strmid = [messageHandler shareInstance].sureMsg.message;
+        state.strmid = [messageHandler shareInstance].sureMsg.mid;
         state.strstate = @"1";
         [[confirmStateHandler shareInstance] executeRegist:state
                                                    success:^(id a){
