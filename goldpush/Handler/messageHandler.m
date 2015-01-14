@@ -7,6 +7,8 @@
 //
 
 #import "messageHandler.h"
+#import "messagedb.h"
+#import "getMessage.h"
 
 static messageHandler * shareins = nil;
 
@@ -28,6 +30,24 @@ static messageHandler * shareins = nil;
     }
     
     return self;
+}
+
+-(void)getMessage:(messageModel *)message{
+    //入库
+    [[messagedb shareInstance] saveMsg:message];
+    //入组
+    [_messageArr addObject:message];
+    //已接收
+    
+}
+
+- (void)executeMessage:(messageModel *)message
+               success:(SuccessBlock)success
+                failed:(FailedBlock)failed{
+    _successblock = success;
+    _failblock = failed;
+    
+    [[getMessage shareInstance] requestWithMessage:message];
 }
 
 @end

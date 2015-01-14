@@ -8,10 +8,17 @@
 
 #import "BaseHandler.h"
 
+@class messageModel;
+
 @interface messageHandler : BaseHandler
 
 + (messageHandler *)shareInstance;
 
 @property(nonatomic,strong) NSMutableArray *messageArr;
+
+-(void)getMessage:(messageModel *)message;
+- (void)executeMessage:(messageModel *)message
+              success:(SuccessBlock)success
+               failed:(FailedBlock)failed;
 
 @end

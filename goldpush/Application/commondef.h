@@ -16,6 +16,7 @@
 //#define LATEST_DOMAIN @"http://latest.toupai360.com"
 #define LATEST_DOMAIN @"http://114.215.129.162"
 #define MACHINE_DOMAIN @"http://192.168.1.101"
+#define PUSH_DOMAIN @"www.kkk885.cn/"
 
 #define NAVIGATION_HEIGHT   64.0f
 

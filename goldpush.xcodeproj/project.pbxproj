@@ -56,6 +56,7 @@
 		6F2B2A351A64FA520026CFDC /* db.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A341A64FA520026CFDC /* db.m */; };
 		6F2B2A381A6504D90026CFDC /* messagedb.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A371A6504D90026CFDC /* messagedb.m */; };
 		6F2B2A3B1A6520C90026CFDC /* messageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */; };
+		6F5829361A660DE5001B6225 /* getMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5829351A660DE5001B6225 /* getMessage.m */; };
 		6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163131A47B80C005A03D3 /* pushHandler.m */; };
 		6F6163171A47BE08005A03D3 /* myStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163161A47BE08005A03D3 /* myStorage.m */; };
 		CAAE283079962BA5BE55BD71 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB199E6346C1EA247319435B /* libPods.a */; };
@@ -174,6 +175,8 @@
 		6F2B2A371A6504D90026CFDC /* messagedb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messagedb.m; path = Database/messagedb.m; sourceTree = "<group>"; };
 		6F2B2A391A6520C90026CFDC /* messageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messageListViewController.h; path = Controller/messageListViewController.h; sourceTree = "<group>"; };
 		6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messageListViewController.m; path = Controller/messageListViewController.m; sourceTree = "<group>"; };
+		6F5829341A660DE5001B6225 /* getMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getMessage.h; path = Network/getMessage.h; sourceTree = "<group>"; };
+		6F5829351A660DE5001B6225 /* getMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getMessage.m; path = Network/getMessage.m; sourceTree = "<group>"; };
 		6F6163121A47B80C005A03D3 /* pushHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pushHandler.h; path = Handler/pushHandler.h; sourceTree = "<group>"; };
 		6F6163131A47B80C005A03D3 /* pushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pushHandler.m; path = Handler/pushHandler.m; sourceTree = "<group>"; };
 		6F6163151A47BE08005A03D3 /* myStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myStorage.h; path = Storage/myStorage.h; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 				339A32721A3D73E900E0316A /* regist.m */,
 				6F2069EB1A5127F900B398C6 /* confirmState.h */,
 				6F2069EC1A5127F900B398C6 /* confirmState.m */,
+				6F5829341A660DE5001B6225 /* getMessage.h */,
+				6F5829351A660DE5001B6225 /* getMessage.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -717,6 +722,7 @@
 				6F2069ED1A5127F900B398C6 /* confirmState.m in Sources */,
 				33849A2C1A3D1B0900AC121E /* ASINetworkQueue.m in Sources */,
 				6F2B2A351A64FA520026CFDC /* db.m in Sources */,
+				6F5829361A660DE5001B6225 /* getMessage.m in Sources */,
 				6F2069F31A512CD500B398C6 /* stateModel.m in Sources */,
 				33849A2A1A3D1B0900AC121E /* ASIHTTPRequest.m in Sources */,
 				33849A301A3D1B0900AC121E /* ASICloudFilesContainerRequest.m in Sources */,
@@ -842,7 +848,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708d87ef-cbbf-41a3-89ed-84da389b328f";
+				PROVISIONING_PROFILE = "a969f2cd-1388-4d1f-88df-3904e20b842f";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -866,7 +872,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708d87ef-cbbf-41a3-89ed-84da389b328f";
+				PROVISIONING_PROFILE = "a969f2cd-1388-4d1f-88df-3904e20b842f";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

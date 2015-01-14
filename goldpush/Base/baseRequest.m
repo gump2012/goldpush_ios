@@ -40,4 +40,9 @@
     return str;
 }
 
+-(NSString *)getPushDoMain{
+    NSString *str = [NSString stringWithFormat:@"%@",PUSH_DOMAIN];
+    return str;
+}
+
 @end

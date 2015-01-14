@@ -32,11 +32,6 @@
         [_sureBtn.layer setCornerRadius:10.0];
         _sureBtn.backgroundColor = [UIColor greenColor];
         [_sureBtn addTarget:self action:@selector(confirmStateClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(getPushWhenRun:)
-                                                     name:NOTI_GETPUSHWHENRUN
-                                                   object:nil];
     }
     
     return self;
@@ -44,36 +39,6 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
--(void)getPushWhenRun:(NSNotification*) aNotification{
-    NSDictionary *apsdic = [[pushHandler shareInstance].curPush objectForKey:@"aps"];
-    if (apsdic) {
-        NSString *stralert = [apsdic objectForKey:@"alert"];
-        if (stralert) {
-            _messageLabel.text = stralert;
-        }
-    }
-    
-    NSString *strmid = [[pushHandler shareInstance].curPush objectForKey:@"mid"];
-    if (strmid) {
-        stateModel *state = [[stateModel alloc] init];
-        state.struid = [[myStorage shareInstance] getUserID];
-        state.strmid = strmid;
-        state.strstate = @"1";
-        [[confirmStateHandler shareInstance] executeRegist:state
-                                                   success:^(id a){
-                                                       NSLog(@"confirm state success");
-                                                   }failed:^(id a){
-                                                       NSLog(@"confirm state fail");
-                                                   }];
-    }
-}
-
-- (void) getUserProfileSuccess: (NSNotification*) aNotification
-{
-    NSDictionary *nameDictionary = [aNotification userInfo];
-    _messageLabel.text = [nameDictionary objectForKey:@"name"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

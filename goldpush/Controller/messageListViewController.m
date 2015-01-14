@@ -23,13 +23,31 @@
                                                                    [UIScreen mainScreen].bounds.size.height)];
         _tableview.dataSource = self;
         _tableview.delegate = self;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(getPushWhenRun:)
+                                                     name:NOTI_GETPUSHWHENRUN
+                                                   object:nil];
     }
     return self;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)getPushWhenRun:(NSNotification*) aNotification{
+    [_tableview reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:_tableview];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [_tableview reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

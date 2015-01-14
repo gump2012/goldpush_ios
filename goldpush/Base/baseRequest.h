@@ -14,5 +14,6 @@
 -(NSString *)getDefaultValue;
 -(NSString *)getDoMain;
 -(NSString *)getTestDoMain;
+-(NSString *)getPushDoMain;
 
 @end

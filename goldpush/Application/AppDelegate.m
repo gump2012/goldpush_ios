@@ -12,6 +12,7 @@
 #import "pushHandler.h"
 #import "myStorage.h"
 #import "MobClick.h"
+#import "messageListViewController.h"
 
 @interface AppDelegate ()
 
@@ -58,7 +59,7 @@
     }else{
         BOOL bregist = [[myStorage shareInstance] registStates];
         if (bregist) {
-            ViewController *view = [[ViewController alloc] init];
+            messageListViewController *view = [[messageListViewController alloc] init];
             UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
             self.window.rootViewController = nai;
         }
@@ -86,6 +87,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [MobClick checkUpdate];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
