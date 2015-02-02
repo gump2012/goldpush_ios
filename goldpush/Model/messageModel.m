@@ -17,6 +17,8 @@
         _deviceid = @"";
         _message = @"";
         _state = 0;
+        _addressor = @"";
+        _truncate = 0;
     }
     return self;
 }

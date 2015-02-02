@@ -18,5 +18,6 @@
 -(BOOL)saveMsg:(messageModel *)message;
 -(BOOL)updateMsg:(messageModel *)message;
 -(void)deleteMsg:(messageModel *)message;
+-(void)alterDB;
 
 @end

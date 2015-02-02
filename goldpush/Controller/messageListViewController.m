@@ -14,6 +14,7 @@
 #import "messageModel.h"
 #import "confirmStateHandler.h"
 #import "ViewController.h"
+#import "messagedb.h"
 
 @interface messageListViewController ()
 
@@ -58,6 +59,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:_tableview];
+    self.navigationItem.hidesBackButton = YES;
+    self.title = @"消息列表";
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -79,10 +82,6 @@
     messageCell *cell = (messageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[messageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        cell.sureblock = ^(id a){
-            [self sureClick:a];
-        };
     }
     
     if (indexPath.row < [messageHandler shareInstance].messageArr.count) {
@@ -132,6 +131,26 @@
             
             [self.navigationController pushViewController:view animated:YES];
         }
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        messageModel *msg = [[messageHandler shareInstance].messageArr objectAtIndex:indexPath.row];
+        [[messagedb shareInstance] deleteMsg:msg];
+        [[messageHandler shareInstance].messageArr removeObjectAtIndex:indexPath.row];
+        
+        // Delete the row from the data source.
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
 @end

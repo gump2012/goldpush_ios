@@ -39,6 +39,8 @@
                                                    object:nil];
         
         _regis = [[registModel alloc] init];
+        
+        self.title = @"注册";
     }
     
     return self;

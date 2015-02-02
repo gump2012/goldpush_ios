@@ -8,19 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#define MSG_CELL_H  60.0f
+#define MSG_CELL_H  70.0f
 
 @class messageModel;
 
 @interface messageCell : UITableViewCell
 {
     UILabel     *_msgLabel;
-    UIButton    *_sureBtn;
-    UILabel     *_sureLabel;
+    UILabel     *_senderLabel;
     messageModel *_myMsg;
 }
-
-@property(nonatomic,copy) void (^sureblock)(id a);
 
 -(void)refreshWithMessage:(messageModel *)message;
 

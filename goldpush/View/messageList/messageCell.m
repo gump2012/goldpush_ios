@@ -15,26 +15,14 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, [UIScreen mainScreen].bounds.size.width - 100.0f, 40.0f)];
+        _msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 40.0f, [UIScreen mainScreen].bounds.size.width - 100.0f, 20.0f)];
         _msgLabel.adjustsFontSizeToFitWidth = YES;
         _msgLabel.numberOfLines = 0;
         [self.contentView addSubview:_msgLabel];
+        _senderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, [UIScreen mainScreen].bounds.size.width - 100.0f, 20.0f)];
+        _senderLabel.adjustsFontSizeToFitWidth = YES;
+        [self.contentView addSubview:_senderLabel];
         
-        _sureBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90.0f, 10.0f, 80.0f, 40.0f)];
-        [_sureBtn setTitle:@"确认" forState:UIControlStateNormal];
-        [_sureBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_sureBtn.layer setMasksToBounds:YES];
-        [_sureBtn.layer setCornerRadius:10.0];
-        _sureBtn.backgroundColor = [UIColor greenColor];
-        [_sureBtn addTarget:self action:@selector(sureClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:_sureBtn];
-        
-        _sureLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 90.0f, 10.0f, 80.0f, 40.0f)];
-        _sureLabel.adjustsFontSizeToFitWidth = YES;
-        _sureLabel.numberOfLines = 0;
-        _sureLabel.text = @"已确认";
-        [self.contentView addSubview:_sureLabel];
-        self.sureblock = nil;
         _myMsg = nil;
     }
     return self;
@@ -47,19 +35,11 @@
 -(void)refreshWithMessage:(messageModel *)message{
     _myMsg = message;
     _msgLabel.text = message.message;
+    _senderLabel.text = message.addressor;
     if (message.state == 0) {
-        _sureLabel.hidden = YES;
-        _sureBtn.hidden = NO;
+        _senderLabel.textColor = [UIColor orangeColor];
     }else{
-        _sureLabel.hidden = NO;
-        _sureBtn.hidden = YES;
-    }
-}
-
--(void)sureClick:(id)sender{
-    [messageHandler shareInstance].sureMsg = _myMsg;
-    if (self.sureblock) {
-        self.sureblock(self);
+        _senderLabel.textColor = [UIColor blackColor];
     }
 }
 

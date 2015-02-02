@@ -48,10 +48,13 @@ static messagedb * shareins = nil;
     if (![rs next]){
         isSave  = YES;
         
-        [database executeUpdate:@"INSERT INTO message (mid,state,message,deviceid) VALUES (?,?,?,?)",message.mid,
+        [database executeUpdate:@"INSERT INTO message (mid,state,message,deviceid,truncate,rank,addressor) VALUES (?,?,?,?,?,?,?)",message.mid,
          [NSNumber numberWithInt:message.state],
          message.message,
-         message.deviceid];
+         message.deviceid,
+         [NSNumber numberWithInt:message.truncate],
+         [NSNumber numberWithInt:message.rank],
+         message.addressor];
     }
     [rs close];
     
@@ -84,6 +87,14 @@ static messagedb * shareins = nil;
 -(void)creatDB{
      FMDatabase *database = [db shareInstance].mydb;
     [database executeUpdate:@"CREATE TABLE IF NOT EXISTS message (mid text,state integer,message text,deviceid text)"];
+}
+
+-(void)alterDB{
+    FMDatabase *database = [db shareInstance].mydb;
+    [database executeUpdate:@"ALTER TABLE  message ADD \
+addressor text,\
+rank integer(2),\
+truncate integer(0)"];
 }
 
 @end

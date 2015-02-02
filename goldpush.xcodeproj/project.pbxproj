@@ -46,6 +46,7 @@
 		339A327A1A3D7A7E00E0316A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A32781A3D7A7E00E0316A /* SVProgressHUD.m */; };
 		339A327D1A3D842400E0316A /* registModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A327C1A3D842400E0316A /* registModel.m */; };
 		339A32801A3D884200E0316A /* registHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A327F1A3D884200E0316A /* registHandler.m */; };
+		6F0501E51A7F98270060BA89 /* getLongText.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0501E41A7F98270060BA89 /* getLongText.m */; };
 		6F2069E91A51107600B398C6 /* dudu.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6F2069E71A51107600B398C6 /* dudu.m4a */; };
 		6F2069EA1A51107600B398C6 /* ringing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6F2069E81A51107600B398C6 /* ringing.m4a */; };
 		6F2069ED1A5127F900B398C6 /* confirmState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2069EC1A5127F900B398C6 /* confirmState.m */; };
@@ -159,6 +160,8 @@
 		339A327E1A3D884200E0316A /* registHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = registHandler.h; path = Handler/registHandler.h; sourceTree = "<group>"; };
 		339A327F1A3D884200E0316A /* registHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = registHandler.m; path = Handler/registHandler.m; sourceTree = "<group>"; };
 		5696BCDDEFF88D2C624C8073 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6F0501E31A7F98270060BA89 /* getLongText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getLongText.h; path = Network/getLongText.h; sourceTree = "<group>"; };
+		6F0501E41A7F98270060BA89 /* getLongText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getLongText.m; path = Network/getLongText.m; sourceTree = "<group>"; };
 		6F2069E71A51107600B398C6 /* dudu.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = dudu.m4a; path = resources/sound/dudu.m4a; sourceTree = "<group>"; };
 		6F2069E81A51107600B398C6 /* ringing.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = ringing.m4a; path = resources/sound/ringing.m4a; sourceTree = "<group>"; };
 		6F2069EB1A5127F900B398C6 /* confirmState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmState.h; path = Network/confirmState.h; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				6F5829351A660DE5001B6225 /* getMessage.m */,
 				6F58293A1A6664A2001B6225 /* getLastMessage.h */,
 				6F58293B1A6664A2001B6225 /* getLastMessage.m */,
+				6F0501E31A7F98270060BA89 /* getLongText.h */,
+				6F0501E41A7F98270060BA89 /* getLongText.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -703,6 +708,7 @@
 				335FDF421A3BEA96002BDA05 /* registViewControl.m in Sources */,
 				33849A351A3D1B0900AC121E /* ASIS3Bucket.m in Sources */,
 				33849A2E1A3D1B0900AC121E /* ASICloudFilesCDNRequest.m in Sources */,
+				6F0501E51A7F98270060BA89 /* getLongText.m in Sources */,
 				6F2B2A321A64F7930026CFDC /* messageModel.m in Sources */,
 				6F58293C1A6664A2001B6225 /* getLastMessage.m in Sources */,
 				339A327D1A3D842400E0316A /* registModel.m in Sources */,
@@ -860,7 +866,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708d87ef-cbbf-41a3-89ed-84da389b328f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -884,7 +890,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708d87ef-cbbf-41a3-89ed-84da389b328f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

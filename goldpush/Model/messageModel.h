@@ -14,5 +14,8 @@
 @property(strong,nonatomic) NSString *message;
 @property(assign,nonatomic) int             state;
 @property(strong,nonatomic) NSString *deviceid;
+@property(strong,nonatomic) NSString *addressor;
+@property(assign,nonatomic) int             truncate;
+@property(assign,nonatomic) int             rank;
 
 @end

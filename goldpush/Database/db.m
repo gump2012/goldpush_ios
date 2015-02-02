@@ -45,4 +45,8 @@ static db * shareins = nil;
     [[messagedb shareInstance] initData];
 }
 
+-(void)alertDB{
+    [[messagedb shareInstance] alterDB];
+}
+
 @end
