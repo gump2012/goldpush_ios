@@ -11,6 +11,7 @@
 #import "getMessage.h"
 #import "messageModel.h"
 #import "getLastMessage.h"
+#import "getLongText.h"
 
 static messageHandler * shareins = nil;
 
@@ -158,6 +159,14 @@ static messageHandler * shareins = nil;
             }
         }
     }
+}
+
+-(void)executeGetLongText:(NSString *)mid
+                  success:(SuccessBlock)successblock
+                   failed:(FailedBlock)failed{
+    _longTextSuccessblock = successblock;
+    _longTextFailblock = failed;
+    [[getLongText shareInstance] requestWithMessageID:mid];
 }
 
 @end

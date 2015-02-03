@@ -19,6 +19,8 @@
 @property(nonatomic,copy) FailedBlock lastMsgFailblock;
 @property(nonatomic,strong) NSMutableArray *lastMsgArr;
 @property(nonatomic,strong) messageModel *sureMsg;
+@property(nonatomic,copy) SuccessBlock longTextSuccessblock;
+@property(nonatomic,copy) FailedBlock longTextFailblock;
 
 -(void)getMessage:(messageModel *)message;
 - (void)executeMessage:(messageModel *)message
@@ -27,5 +29,8 @@
 -(messageModel *)getMessageWithPush:(NSDictionary *)pushdic;
 -(void)getNewMessage;
 -(void)updateMessageWithMsg;
+-(void)executeGetLongText:(NSString *)mid
+                  success:(SuccessBlock)successblock
+                   failed:(FailedBlock)failed;
 
 @end

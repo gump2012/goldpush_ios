@@ -33,6 +33,9 @@ static messagedb * shareins = nil;
         message.state = [rs intForColumn:@"state"];
         message.message = [rs stringForColumn:@"message"];
         message.deviceid = [rs stringForColumn:@"deviceid"];
+        message.addressor  = [rs stringForColumn:@"addressor"];
+        message.truncate = [rs intForColumn:@"truncate"];
+        message.rank = [rs intForColumn:@"rank"];
         
         [[messageHandler shareInstance].messageArr addObject:message];
     }
@@ -69,9 +72,10 @@ static messagedb * shareins = nil;
     if ([rs next]){
         isUpdate  = YES;
         
-        [database executeUpdate:@"UPDATE message SET message = ? ,  state = ? , deviceid = ? WHERE mid = ? ",message.message,
+        [database executeUpdate:@"UPDATE message SET message = ? ,  state = ? , deviceid = ? , truncate = ? WHERE mid = ? ",message.message,
          [NSNumber numberWithInt:message.state],
          message.deviceid,
+          [NSNumber numberWithInt:message.truncate],
          message.mid];
     }
     [rs close];

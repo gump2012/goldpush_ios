@@ -13,6 +13,7 @@
 #import "SVProgressHUD.h"
 #import "messageModel.h"
 #import "messageHandler.h"
+#import "messagedb.h"
 
 @interface ViewController ()
 
@@ -25,11 +26,11 @@
 -(id)init{
     self = [super init];
     if (self) {
-        _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 80.0f)];
+        _messageLabel = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 10.0f,
+                                                                     [UIScreen mainScreen].bounds.size.width,
+                                                                     [UIScreen mainScreen].bounds.size.height - 20.0f)];
         _messageLabel.textColor = [UIColor blackColor];
-        _messageLabel.font = [UIFont systemFontOfSize:14.0f];
-        _messageLabel.numberOfLines = 0;
-        _messageLabel.textAlignment = NSTextAlignmentCenter;
+        _messageLabel.font = [UIFont systemFontOfSize:16.0f];
     }
     
     return self;
@@ -62,8 +63,20 @@
         _messageLabel.text = _myMsg.message;
         
         if (_myMsg.truncate == 1) {
+            [[messageHandler shareInstance] executeGetLongText:_myMsg.mid
+        success:^(id a){
+            if (a) {
+                _myMsg.message = (NSString *)a;
+                _messageLabel.text = _myMsg.message;
+                _myMsg.truncate = 0;
+                [[messagedb shareInstance] updateMsg:_myMsg];
+            }
             
-        }
+            
+        }failed:^(id a){
+            NSLog(@"executeGetLongText faild");
+        }];
+        };
     }
 }
 
@@ -72,6 +85,12 @@
     [self.view addSubview:_messageLabel];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    if (_myMsg) {
+        self.title = _myMsg.addressor;
+    }else{
+        self.title = @"消息内容";
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

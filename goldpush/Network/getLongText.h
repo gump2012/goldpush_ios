@@ -10,4 +10,5 @@
 
 @interface getLongText : baseRequest
 + (getLongText *)shareInstance;
+-(void)requestWithMessageID:(NSString *)strid;
 @end
