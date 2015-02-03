@@ -31,6 +31,7 @@
     //[MobClick checkUpdate];
     
     [[db shareInstance] creatdb];
+    [[db shareInstance] alertDB];
     [[db shareInstance] initData];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {

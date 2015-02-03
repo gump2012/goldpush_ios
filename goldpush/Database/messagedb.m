@@ -91,10 +91,9 @@ static messagedb * shareins = nil;
 
 -(void)alterDB{
     FMDatabase *database = [db shareInstance].mydb;
-    [database executeUpdate:@"ALTER TABLE  message ADD \
-addressor text,\
-rank integer(2),\
-truncate integer(0)"];
+    [database executeUpdate:@"ALTER TABLE  message ADD addressor text"];  
+    [database executeUpdate:@"ALTER TABLE  message ADD rank integer(1)"];
+    [database executeUpdate:@"ALTER TABLE  message ADD truncate integer(0)"];
 }
 
 @end

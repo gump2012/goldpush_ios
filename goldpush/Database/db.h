@@ -17,5 +17,6 @@
 
 -(void)creatdb;
 -(void)initData;
+-(void)alertDB;
 
 @end

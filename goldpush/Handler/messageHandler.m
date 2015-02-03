@@ -112,6 +112,21 @@ static messageHandler * shareins = nil;
                     message.mid = str;
                 }
                 
+                str = [dic objectForKey:@"truncate"];
+                if(str){
+                    message.truncate = [str intValue];
+                }
+                
+                str = [dic objectForKey:@"rank"];
+                if (str) {
+                    message.rank = [str intValue];
+                }
+                
+                str = [dic objectForKey:@"addressor"];
+                if (str) {
+                    message.addressor = str;
+                }
+                
                 message.deviceid = [[myStorage shareInstance] getUserID];
                 message.state = 0;
                 
