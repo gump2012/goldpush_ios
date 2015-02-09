@@ -65,6 +65,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[messageHandler shareInstance].messageArr removeAllObjects];
+    [[messageHandler shareInstance].messageArr setArray:[[messagedb shareInstance] getMessageArrFromDB] ];
     [_tableview reloadData];
 }
 

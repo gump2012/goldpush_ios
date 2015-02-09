@@ -14,6 +14,7 @@
 #import "messageModel.h"
 #import "messageHandler.h"
 #import "messagedb.h"
+#import "messageInfoCell.h"
 
 @interface ViewController ()
 
@@ -26,11 +27,11 @@
 -(id)init{
     self = [super init];
     if (self) {
-        _messageLabel = [[UITextView alloc] initWithFrame:CGRectMake(0.0f, 10.0f,
-                                                                     [UIScreen mainScreen].bounds.size.width,
-                                                                     [UIScreen mainScreen].bounds.size.height - 20.0f)];
-        _messageLabel.textColor = [UIColor blackColor];
-        _messageLabel.font = [UIFont systemFontOfSize:16.0f];
+        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
+                                                                   [UIScreen mainScreen].bounds.size.width,
+                                                                   [UIScreen mainScreen].bounds.size.height)];
+        _tableview.dataSource = self;
+        _tableview.delegate = self;
     }
     
     return self;
@@ -43,6 +44,23 @@
 -(void)viewWillAppear:(BOOL)animated{
      [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
+    if (_myMsg) {
+        NSMutableArray *arr = [_myMsg objectForKey:@"messagearr"];
+        if (arr) {
+            for (int i = 0; i < arr.count; ++i) {
+                messageModel *msg = [arr objectAtIndex:i];
+                stateModel *state = [[stateModel alloc] init];
+                state.struid = [[myStorage shareInstance] getUserID];
+                state.strmid = msg.mid;
+                state.strstate = @"1";
+                [[confirmStateHandler shareInstance] executeRegist:state
+                                                           success:^(id a){
+                                                               [[messageHandler shareInstance] updateMessageWithMsg:msg];
+                                                           }failed:^(id a){
+                                                           }];
+            }
+        }
+    }
 //    if (_myMsg) {
 //        if (_myMsg.state == 0) {
 //            [messageHandler shareInstance].sureMsg = _myMsg;
@@ -82,7 +100,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:_messageLabel];
+    [self.view addSubview:_tableview];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     if (_myMsg) {
@@ -97,4 +115,47 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark -------------------tableview datasource----------------------
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    int icount = 0;
+    if (_myMsg) {
+        NSMutableArray *arr = [_myMsg objectForKey:@"messagearr"];
+        if (arr) {
+            icount = arr.count;
+        }
+    }
+    return icount;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"messageInfoCell";
+    messageInfoCell *cell = (messageInfoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[messageInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    if (_myMsg) {
+        NSArray *arr = [_myMsg objectForKey:@"messagearr"];
+        if (arr && indexPath.row < arr.count) {
+            messageModel *msg = [arr objectAtIndex:indexPath.row];
+            [cell refreshWithMessage:msg];
+        }
+    }
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+#pragma mark -------------------tableview delegate----------------------
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+}
 @end

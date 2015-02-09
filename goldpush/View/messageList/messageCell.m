@@ -15,8 +15,9 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _msgLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 100.0f, 10.0f, 100.0f, 30.0f)];
+        _msgLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 120.0f, 10.0f, 100.0f, 30.0f)];
         [self.contentView addSubview:_msgLabel];
+        _msgLabel.textAlignment = NSTextAlignmentRight;
         _senderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, [UIScreen mainScreen].bounds.size.width - 100.0f, 30.0f)];
         _senderLabel.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_senderLabel];

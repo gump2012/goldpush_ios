@@ -32,5 +32,5 @@
 -(void)executeGetLongText:(NSString *)mid
                   success:(SuccessBlock)successblock
                    failed:(FailedBlock)failed;
-
+-(void)updateMessageWithMsg:(messageModel *)msg;
 @end

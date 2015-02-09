@@ -155,6 +155,34 @@ static messageHandler * shareins = nil;
     }
 }
 
+-(void)updateMessageWithMsg:(messageModel *)msg{
+    if (msg) {
+        msg.state = 1;
+        [[messagedb shareInstance] updateMsg:msg];
+        
+        for (int i = 0; i < _messageArr.count; ++i) {
+//            messageModel *msg = [_messageArr objectAtIndex:i];
+//            if (msg.mid == self.sureMsg.mid) {
+//                msg.state = 1;
+//                break;
+//            }
+            NSDictionary *dic = [_messageArr objectAtIndex:i];
+            if (dic) {
+                NSArray *arr = [dic objectForKey:@"messagearr"];
+                if (arr) {
+                    for (int j = 0; j < arr.count; ++j) {
+                                    messageModel *mmsg = [arr objectAtIndex:j];
+                                    if (mmsg.mid == msg.mid) {
+                                        mmsg.state = 1;
+                                        break;
+                                    }
+                    }
+                }
+            }
+        }
+    }
+}
+
 -(void)executeGetLongText:(NSString *)mid
                   success:(SuccessBlock)successblock
                    failed:(FailedBlock)failed{

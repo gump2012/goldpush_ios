@@ -24,23 +24,9 @@ static messagedb * shareins = nil;
 }
 
 -(void)initData{
-    FMDatabase *database = [db shareInstance].mydb;
-    FMResultSet *rs=[database executeQuery:@"SELECT * FROM message"];
-    [[messageHandler shareInstance].messageArr removeAllObjects];
-    while ([rs next]){
-        messageModel *message = [[messageModel alloc] init];
-        message.mid = [rs stringForColumn:@"mid"];
-        message.state = [rs intForColumn:@"state"];
-        message.message = [rs stringForColumn:@"message"];
-        message.deviceid = [rs stringForColumn:@"deviceid"];
-        message.addressor  = [rs stringForColumn:@"addressor"];
-        message.truncate = [rs intForColumn:@"truncate"];
-        message.rank = [rs intForColumn:@"rank"];
-        
-        [[messageHandler shareInstance].messageArr addObject:message];
-    }
     
-    [rs close];
+    [[messageHandler shareInstance].messageArr removeAllObjects];
+    [[messageHandler shareInstance].messageArr setArray:[self getMessageArrFromDB]];
 }
 
 -(BOOL)saveMsg:(messageModel *)message{
@@ -132,7 +118,7 @@ static messagedb * shareins = nil;
                     if (arr) {
                         [arr addObject:message];
                     }
-                    if (message.state == 1) {
+                    if (message.state == 0) {
                         NSNumber *unreadcount = [dic objectForKey:@"unreadcount"];
                         if (unreadcount) {
                             int icount = unreadcount.intValue + 1;
@@ -152,9 +138,9 @@ static messagedb * shareins = nil;
             [messagearr addObject:message];
             [dic setObject:messagearr forKey:@"messagearr"];
             if (message.state == 1) {
-                [dic setObject:[NSNumber numberWithInt:1] forKey:@"unreadcount"];
-            }else{
                 [dic setObject:[NSNumber numberWithInt:0] forKey:@"unreadcount"];
+            }else{
+                [dic setObject:[NSNumber numberWithInt:1] forKey:@"unreadcount"];
             }
             
             [arr addObject:dic];

@@ -62,6 +62,7 @@
 		6F58293C1A6664A2001B6225 /* getLastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F58293B1A6664A2001B6225 /* getLastMessage.m */; };
 		6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163131A47B80C005A03D3 /* pushHandler.m */; };
 		6F6163171A47BE08005A03D3 /* myStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163161A47BE08005A03D3 /* myStorage.m */; };
+		6FF71B831A884A920022AEC9 /* messageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF71B821A884A920022AEC9 /* messageInfoCell.m */; };
 		CAAE283079962BA5BE55BD71 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB199E6346C1EA247319435B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +191,8 @@
 		6F6163131A47B80C005A03D3 /* pushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pushHandler.m; path = Handler/pushHandler.m; sourceTree = "<group>"; };
 		6F6163151A47BE08005A03D3 /* myStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myStorage.h; path = Storage/myStorage.h; sourceTree = "<group>"; };
 		6F6163161A47BE08005A03D3 /* myStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myStorage.m; path = Storage/myStorage.m; sourceTree = "<group>"; };
+		6FF71B811A884A920022AEC9 /* messageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messageInfoCell.h; path = View/messageinfo/messageInfoCell.h; sourceTree = "<group>"; };
+		6FF71B821A884A920022AEC9 /* messageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messageInfoCell.m; path = View/messageinfo/messageInfoCell.m; sourceTree = "<group>"; };
 		B60B57C18BFC14E3A8A8BB53 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DB199E6346C1EA247319435B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -323,6 +326,7 @@
 		335FDF321A3BE708002BDA05 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6FF71B801A884A2F0022AEC9 /* messageinfo */,
 				6F2B2A3C1A6520F40026CFDC /* messageList */,
 			);
 			name = View;
@@ -548,6 +552,15 @@
 			name = messageList;
 			sourceTree = "<group>";
 		};
+		6FF71B801A884A2F0022AEC9 /* messageinfo */ = {
+			isa = PBXGroup;
+			children = (
+				6FF71B811A884A920022AEC9 /* messageInfoCell.h */,
+				6FF71B821A884A920022AEC9 /* messageInfoCell.m */,
+			);
+			name = messageinfo;
+			sourceTree = "<group>";
+		};
 		87738480528D089FBA82A072 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +759,7 @@
 				33849A301A3D1B0900AC121E /* ASICloudFilesContainerRequest.m in Sources */,
 				33849A281A3D1B0900AC121E /* ASIDownloadCache.m in Sources */,
 				33849A371A3D1B0900AC121E /* ASIS3BucketRequest.m in Sources */,
+				6FF71B831A884A920022AEC9 /* messageInfoCell.m in Sources */,
 				33849A361A3D1B0900AC121E /* ASIS3BucketObject.m in Sources */,
 				3354230B1A285E0C00AFA31F /* main.m in Sources */,
 			);

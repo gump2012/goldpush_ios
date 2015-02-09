@@ -10,10 +10,12 @@
 
 @class messageModel;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     UITextView *_messageLabel;
     NSDictionary *_myMsg;
+    
+    UITableView *_tableview;
 }
 
 @property(nonatomic,strong) NSDictionary *myMsg;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define MSG_CELL_H  70.0f
+#define MSG_CELL_H  50.0f
 
 @class messageModel;
 
