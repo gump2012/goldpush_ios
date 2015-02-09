@@ -43,41 +43,41 @@
 -(void)viewWillAppear:(BOOL)animated{
      [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-    if (_myMsg) {
-        if (_myMsg.state == 0) {
-            [messageHandler shareInstance].sureMsg = _myMsg;
-            stateModel *state = [[stateModel alloc] init];
-            state.struid = [[myStorage shareInstance] getUserID];
-            state.strmid = _myMsg.mid;
-            state.strstate = @"1";
-            [SVProgressHUD showWithStatus:@"正在确认..."];
-            [[confirmStateHandler shareInstance] executeRegist:state
-                                                       success:^(id a){
-                                                           [SVProgressHUD showSuccessWithStatus:@"确认成功"];
-                                                           [[messageHandler shareInstance] updateMessageWithMsg];
-                                                       }failed:^(id a){
-                                                           [SVProgressHUD showErrorWithStatus:@"确认失败"];
-                                                       }];
-        }
-        
-        _messageLabel.text = _myMsg.message;
-        
-        if (_myMsg.truncate == 1) {
-            [[messageHandler shareInstance] executeGetLongText:_myMsg.mid
-        success:^(id a){
-            if (a) {
-                _myMsg.message = (NSString *)a;
-                _messageLabel.text = _myMsg.message;
-                _myMsg.truncate = 0;
-                [[messagedb shareInstance] updateMsg:_myMsg];
-            }
-            
-            
-        }failed:^(id a){
-            NSLog(@"executeGetLongText faild");
-        }];
-        };
-    }
+//    if (_myMsg) {
+//        if (_myMsg.state == 0) {
+//            [messageHandler shareInstance].sureMsg = _myMsg;
+//            stateModel *state = [[stateModel alloc] init];
+//            state.struid = [[myStorage shareInstance] getUserID];
+//            state.strmid = _myMsg.mid;
+//            state.strstate = @"1";
+//            [SVProgressHUD showWithStatus:@"正在确认..."];
+//            [[confirmStateHandler shareInstance] executeRegist:state
+//                                                       success:^(id a){
+//                                                           [SVProgressHUD showSuccessWithStatus:@"确认成功"];
+//                                                           [[messageHandler shareInstance] updateMessageWithMsg];
+//                                                       }failed:^(id a){
+//                                                           [SVProgressHUD showErrorWithStatus:@"确认失败"];
+//                                                       }];
+//        }
+//        
+//        _messageLabel.text = _myMsg.message;
+//        
+//        if (_myMsg.truncate == 1) {
+//            [[messageHandler shareInstance] executeGetLongText:_myMsg.mid
+//        success:^(id a){
+//            if (a) {
+//                _myMsg.message = (NSString *)a;
+//                _messageLabel.text = _myMsg.message;
+//                _myMsg.truncate = 0;
+//                [[messagedb shareInstance] updateMsg:_myMsg];
+//            }
+//            
+//            
+//        }failed:^(id a){
+//            NSLog(@"executeGetLongText faild");
+//        }];
+//        };
+//    }
 }
 
 - (void)viewDidLoad {
@@ -86,7 +86,7 @@
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     if (_myMsg) {
-        self.title = _myMsg.addressor;
+        self.title = [_myMsg objectForKey:@"addressor"];
     }else{
         self.title = @"消息内容";
     }

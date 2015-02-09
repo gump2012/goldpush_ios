@@ -19,6 +19,6 @@
     messageModel *_myMsg;
 }
 
--(void)refreshWithMessage:(messageModel *)message;
+-(void)refreshWithMessage:(NSDictionary *)message;
 
 @end

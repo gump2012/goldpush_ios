@@ -42,13 +42,6 @@ static messageHandler * shareins = nil;
         [_messageArr removeAllObjects];
         [_messageArr setArray:[[messagedb shareInstance] getMessageArrFromDB]];
     }
-    
-    //已接收
-//    [self executeMessage:message success:^(id obj) {
-//        NSLog(@"getMessage success");
-//    } failed:^(id obj) {
-//        NSLog(@"getMessage faile");
-//    }];
 }
 
 - (void)executeMessage:(messageModel *)message

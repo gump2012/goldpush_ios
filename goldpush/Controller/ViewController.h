@@ -13,10 +13,10 @@
 @interface ViewController : UIViewController
 {
     UITextView *_messageLabel;
-    messageModel *_myMsg;
+    NSDictionary *_myMsg;
 }
 
-@property(nonatomic,strong) messageModel *myMsg;
+@property(nonatomic,strong) NSDictionary *myMsg;
 
 @end
 

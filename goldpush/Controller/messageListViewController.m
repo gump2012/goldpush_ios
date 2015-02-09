@@ -85,7 +85,7 @@
     }
     
     if (indexPath.row < [messageHandler shareInstance].messageArr.count) {
-        messageModel *message = [messageHandler shareInstance].messageArr[indexPath.row];
+        NSDictionary *message = [messageHandler shareInstance].messageArr[indexPath.row];
         [cell refreshWithMessage:message];
     }
     
@@ -104,7 +104,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row < [messageHandler shareInstance].messageArr.count) {
-        messageModel *message = [messageHandler shareInstance].messageArr[indexPath.row];
+        NSDictionary *message = [messageHandler shareInstance].messageArr[indexPath.row];
         if (message) {
             ViewController *view = [[ViewController alloc] init];
             view.myMsg = message;
@@ -121,13 +121,17 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        messageModel *msg = [[messageHandler shareInstance].messageArr objectAtIndex:indexPath.row];
-        [[messagedb shareInstance] deleteMsg:msg];
-        [[messageHandler shareInstance].messageArr removeObjectAtIndex:indexPath.row];
-        
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
+        NSDictionary *msg = [[messageHandler shareInstance].messageArr objectAtIndex:indexPath.row];
+        if (msg) {
+            NSString *str = [msg objectForKey:@"addressor"];
+            if (str) {
+                [[messagedb shareInstance] deleteMsgWithAddressor:str];
+                [[messageHandler shareInstance].messageArr removeObjectAtIndex:indexPath.row];
+                
+                // Delete the row from the data source.
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        }
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

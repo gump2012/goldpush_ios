@@ -88,6 +88,11 @@ static messagedb * shareins = nil;
     [database executeUpdate:@"DELETE FROM message WHERE mid = ?",message.mid];
 }
 
+-(void)deleteMsgWithAddressor:(NSString *)str{
+    FMDatabase *database = [db shareInstance].mydb;
+    [database executeUpdate:@"DELETE FROM message WHERE addressor = ?",str];
+}
+
 -(void)creatDB{
      FMDatabase *database = [db shareInstance].mydb;
     [database executeUpdate:@"CREATE TABLE IF NOT EXISTS message (mid text,state integer,message text,deviceid text)"];

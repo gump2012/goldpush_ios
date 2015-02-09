@@ -20,5 +20,6 @@
 -(void)deleteMsg:(messageModel *)message;
 -(void)alterDB;
 -(NSMutableArray *)getMessageArrFromDB;
+-(void)deleteMsgWithAddressor:(NSString *)str;
 
 @end
