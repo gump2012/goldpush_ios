@@ -39,15 +39,16 @@ static messageHandler * shareins = nil;
 -(void)getMessage:(messageModel *)message{
     //入库才能入组
     if ([[messagedb shareInstance] saveMsg:message]) {
-        [_messageArr addObject:message];
+        [_messageArr removeAllObjects];
+        [_messageArr setArray:[[messagedb shareInstance] getMessageArrFromDB]];
     }
     
     //已接收
-    [self executeMessage:message success:^(id obj) {
-        NSLog(@"getMessage success");
-    } failed:^(id obj) {
-        NSLog(@"getMessage faile");
-    }];
+//    [self executeMessage:message success:^(id obj) {
+//        NSLog(@"getMessage success");
+//    } failed:^(id obj) {
+//        NSLog(@"getMessage faile");
+//    }];
 }
 
 - (void)executeMessage:(messageModel *)message

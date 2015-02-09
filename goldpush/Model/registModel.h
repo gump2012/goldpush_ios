@@ -12,9 +12,11 @@
 {
     NSString *_userid;
     NSString *_phonenum;
+    NSString *_ps;
 }
 
 @property(nonatomic,strong) NSString *userid;
 @property(nonatomic,strong) NSString *phonenum;
+@property(nonatomic,strong) NSString *ps;
 
 @end

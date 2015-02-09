@@ -100,4 +100,65 @@ static messagedb * shareins = nil;
     [database executeUpdate:@"ALTER TABLE  message ADD truncate integer(0)"];
 }
 
+-(NSMutableArray *)getMessageArrFromDB{
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    
+    FMDatabase *database = [db shareInstance].mydb;
+    FMResultSet *rs=[database executeQuery:@"SELECT * FROM message"];
+    [[messageHandler shareInstance].messageArr removeAllObjects];
+    while ([rs next]){
+        messageModel *message = [[messageModel alloc] init];
+        message.mid = [rs stringForColumn:@"mid"];
+        message.state = [rs intForColumn:@"state"];
+        message.message = [rs stringForColumn:@"message"];
+        message.deviceid = [rs stringForColumn:@"deviceid"];
+        message.addressor  = [rs stringForColumn:@"addressor"];
+        message.truncate = [rs intForColumn:@"truncate"];
+        message.rank = [rs intForColumn:@"rank"];
+        
+        BOOL isadd = NO;
+        for (int i = 0; i < arr.count; ++i) {
+            NSDictionary *dic = [arr objectAtIndex:i];
+            NSString *strname = [dic objectForKey:@"addressor"];
+            if (strname) {
+                if ([strname isEqualToString:message.addressor]) {
+                    isadd = YES;
+                    NSMutableArray *arr = [dic objectForKey:@"messagearr"];
+                    if (arr) {
+                        [arr addObject:message];
+                    }
+                    if (message.state == 1) {
+                        NSNumber *unreadcount = [dic objectForKey:@"unreadcount"];
+                        if (unreadcount) {
+                            int icount = unreadcount.intValue + 1;
+                            [dic setValue:[NSNumber numberWithInt:icount] forKey:@"unreadcount"];
+                        }
+                    }
+                    
+                    break;
+                }
+            }
+        }
+        
+        if (!isadd) {
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+            [dic setObject:message.addressor forKey:@"addressor"];
+            NSMutableArray *messagearr = [[NSMutableArray alloc] init];
+            [messagearr addObject:message];
+            [dic setObject:messagearr forKey:@"messagearr"];
+            if (message.state == 1) {
+                [dic setObject:[NSNumber numberWithInt:1] forKey:@"unreadcount"];
+            }else{
+                [dic setObject:[NSNumber numberWithInt:0] forKey:@"unreadcount"];
+            }
+            
+            [arr addObject:dic];
+        }
+    }
+    
+    [rs close];
+    
+    return arr;
+}
+
 @end

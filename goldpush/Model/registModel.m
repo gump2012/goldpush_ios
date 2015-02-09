@@ -12,7 +12,6 @@
 
 @synthesize userid = _userid;
 @synthesize phonenum = _phonenum;
-
-
+@synthesize ps = _ps;
 
 @end

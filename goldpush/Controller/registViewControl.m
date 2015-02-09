@@ -17,11 +17,19 @@
 -(id)init{
     self = [super init];
     if (self) {
-        _phonetext = [[UITextField alloc] initWithFrame:CGRectMake(40.0f, 100.0f, 240.0f, 40.0f)];
-        _phonetext.placeholder = @"请输入手机号码";
-        _phonetext.keyboardType= UIKeyboardTypeNumberPad;
+        _userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 80.0f, 100.0f, 40.0f)];
+        _userNameLabel.text = @"用户名:";
         
-        _surebtn = [[UIButton alloc] initWithFrame:CGRectMake(130.0f, 180.0f, 60.0f, 40.0f)];
+        _phonetext = [[UITextField alloc] initWithFrame:CGRectMake(140.0f, 80.0f, 180.0f, 40.0f)];
+        _phonetext.placeholder = @"请输入用户名";
+        
+        _psLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 100.0f, 40.0f)];
+        _psLabel.text = @"密码:";
+        
+        _pstext = [[UITextField alloc] initWithFrame:CGRectMake(140.0f, 140.0f, 180.0f, 40.0f)];
+        _pstext.placeholder = @"请输入密码";
+        
+        _surebtn = [[UIButton alloc] initWithFrame:CGRectMake(130.0f, 200.0f, 60.0f, 40.0f)];
         [_surebtn setTitle:@"注册" forState:UIControlStateNormal];
         [_surebtn.layer setMasksToBounds:YES];
         [_surebtn.layer setCornerRadius:10.0];
@@ -71,18 +79,23 @@
 -(void)viewDidLoad{
     [self.view addSubview:_phonetext];
     [self.view addSubview:_surebtn];
+    [self.view addSubview:_userNameLabel];
+    [self.view addSubview:_pstext];
+    [self.view addSubview:_psLabel];
     
     //[SVProgressHUD showWithStatus:@"正在获得设备id"];
 }
 
 -(void)registerClick:(id)sender{
-    if (_phonetext.text.length != 11) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入11位手机号" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    if (_phonetext.text.length == 0 || _pstext.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入用户名或密码" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         [alert addButtonWithTitle:@"Yes"];
         [alert show];
     }else{
         _regis.phonenum = _phonetext.text;
+        _regis.ps = _pstext.text;
         [_phonetext resignFirstResponder];
+        [_pstext resignFirstResponder];
         [SVProgressHUD showWithStatus:@"正在注册。。。"];
         [[registHandler shareInstance] executeRegist:_regis
                                              success:^(id a){

@@ -19,5 +19,6 @@
 -(BOOL)updateMsg:(messageModel *)message;
 -(void)deleteMsg:(messageModel *)message;
 -(void)alterDB;
+-(NSMutableArray *)getMessageArrFromDB;
 
 @end

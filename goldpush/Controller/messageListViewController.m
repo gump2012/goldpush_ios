@@ -59,7 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:_tableview];
-    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.hidesBackButton = NO;
     self.title = @"消息列表";
 }
 
@@ -95,26 +95,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-}
-
--(void)sureClick:(id)sender{
-    if ([messageHandler shareInstance].sureMsg) {
-        [SVProgressHUD showWithStatus:@"正在确认..."];
-        
-        stateModel *state = [[stateModel alloc] init];
-        state.struid = [[myStorage shareInstance] getUserID];
-        state.strmid = [messageHandler shareInstance].sureMsg.mid;
-        state.strstate = @"1";
-        [[confirmStateHandler shareInstance] executeRegist:state
-                                                   success:^(id a){
-                                                       [SVProgressHUD showSuccessWithStatus:@"确认成功!"];
-                                                       
-                                                       [[messageHandler shareInstance] updateMessageWithMsg];
-                                                       [_tableview reloadData];
-                                                   }failed:^(id a){
-                                                       [SVProgressHUD showErrorWithStatus:@"确认失败"];
-                                                   }];
-    }
 }
 
 #pragma mark -------------------tableview delegate----------------------

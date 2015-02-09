@@ -23,9 +23,10 @@ static regist * shareins = nil;
 }
 
 -(void)requestWithRegist:(registModel *)reg{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@Users/userRegistration?userid=%@&phoneNum=%@&deviceType=ios",[self getTestDoMain],
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@Users/AppRegistration?userid=%@&userName=%@&password=%@&deviceType=ios",[self getTestDoMain],
                                        reg.userid,
-                                       reg.phonenum]];
+                                       reg.phonenum,
+                                       reg.ps]];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
     [request setDelegate:self];

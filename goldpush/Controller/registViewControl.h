@@ -12,7 +12,10 @@
 
 @interface registViewControl : UIViewController
 {
+    UILabel *_userNameLabel;
+    UILabel *_psLabel;
     UITextField *_phonetext;
+    UITextField *_pstext;
     UIButton *_surebtn;
     registModel *_regis;
 }
