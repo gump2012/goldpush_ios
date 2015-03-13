@@ -28,7 +28,8 @@
     [[myStorage shareInstance] setDefaultValue];
     [MobClick startWithAppkey:@"54b4dafefd98c588a10001ce" reportPolicy:REALTIME channelId:@"test"];
     
-    //[MobClick checkUpdate];
+    WINDOW_WIDTH = [UIScreen mainScreen].bounds.size.width;
+    WINDOW_HIGHT = [UIScreen mainScreen].bounds.size.height;
     
     [[db shareInstance] creatdb];
     [[db shareInstance] alertDB];

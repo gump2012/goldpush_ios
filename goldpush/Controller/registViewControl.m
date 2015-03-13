@@ -77,6 +77,10 @@
 }
 
 -(void)viewDidLoad{
+    UIImageView *bgview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HIGHT)];
+    bgview.image = [UIImage imageNamed:@"loginbg"];
+    [self.view addSubview:bgview];
+    
     [self.view addSubview:_phonetext];
     [self.view addSubview:_surebtn];
     [self.view addSubview:_userNameLabel];

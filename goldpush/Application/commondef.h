@@ -27,4 +27,7 @@ enum TabbarEnum{
     TABBAR_ME,
 };
 
+float WINDOW_WIDTH;
+float WINDOW_HIGHT;
+
 #endif
