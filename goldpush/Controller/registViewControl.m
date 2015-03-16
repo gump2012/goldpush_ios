@@ -40,7 +40,7 @@
                                                  selector:@selector(getUserProfileSuccess:)
                                                      name:NOTI_GETUID
                                                    object:nil];
-        
+         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(getUserProfileFail:)
                                                      name:NOTI_GETUIDFAIL
@@ -86,8 +86,6 @@
     [self.view addSubview:_userNameLabel];
     [self.view addSubview:_pstext];
     [self.view addSubview:_psLabel];
-    
-    //[SVProgressHUD showWithStatus:@"正在获得设备id"];
 }
 
 -(void)registerClick:(id)sender{
