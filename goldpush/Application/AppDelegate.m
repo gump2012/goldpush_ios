@@ -36,10 +36,9 @@
     [[db shareInstance] initData];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        UIUserNotificationType types = UIUserNotificationTypeBadge                                                                                                                        | UIUserNotificationTypeSound |                                                                                            UIUserNotificationTypeAlert ;
+        UIUserNotificationType types = UIUserNotificationTypeBadge| UIUserNotificationTypeSound | UIUserNotificationTypeAlert ;
         UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-       // [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
     else{
@@ -59,29 +58,12 @@
             
             messageModel *message = [[messageHandler shareInstance] getMessageWithPush:[pushHandler shareInstance].curPush];
             [[messageHandler shareInstance] getMessage:message];
-            
-            //这里定义自己的处理方式
-            messageListViewController *view = [[messageListViewController alloc] init];
-            UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
-            self.window.rootViewController = nai;
-            
-        }
-    }else{
-        BOOL bregist = [[myStorage shareInstance] registStates];
-        if (bregist) {
-            
-            [[messageHandler shareInstance] getNewMessage];
-            
-            messageListViewController *view = [[messageListViewController alloc] init];
-            UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
-            self.window.rootViewController = nai;
-        }
-        else{
-            registViewControl *view = [[registViewControl alloc] init];
-            UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
-            self.window.rootViewController = nai;
         }
     }
+    
+    registViewControl *view = [[registViewControl alloc] init];
+    UINavigationController *nai = [[UINavigationController alloc] initWithRootViewController:view];
+    self.window.rootViewController = nai;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -147,13 +129,9 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo{
     [[pushHandler shareInstance].curPush setDictionary:userInfo];
     
     if (application.applicationState == UIApplicationStateActive) {
-        //第二种情况
-        
-//        if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL) {
-//            NSString *str = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-//        }
+        //第二种情况 手机前台接到消息
     } else {
-        //第三种情况
+        //第三种情况 手机后台接到消息 点击消息进入程序
         //这里定义自己的处理方式
     }
     

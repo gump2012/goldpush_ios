@@ -867,6 +867,7 @@
 			baseConfigurationReference = B60B57C18BFC14E3A8A8BB53 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: gu tao (257323LB6C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: gu tao (257323LB6C)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -891,6 +892,7 @@
 			baseConfigurationReference = 5696BCDDEFF88D2C624C8073 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: gu tao (257323LB6C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: gu tao (257323LB6C)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

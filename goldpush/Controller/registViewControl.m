@@ -29,11 +29,8 @@
         _pstext = [[UITextField alloc] initWithFrame:CGRectMake(140.0f, 140.0f, 180.0f, 40.0f)];
         _pstext.placeholder = @"请输入密码";
         
-        _surebtn = [[UIButton alloc] initWithFrame:CGRectMake(130.0f, 200.0f, 60.0f, 40.0f)];
-        [_surebtn setTitle:@"注册" forState:UIControlStateNormal];
-        [_surebtn.layer setMasksToBounds:YES];
-        [_surebtn.layer setCornerRadius:10.0];
-        _surebtn.backgroundColor = [UIColor greenColor];
+        _surebtn = [[UIButton alloc] initWithFrame:CGRectMake((WINDOW_WIDTH - 225.0f)/2.0f, 200.0f, 225.0f, 35.0f)];
+        [_surebtn setImage:[UIImage imageNamed:@"loginbtn"] forState:UIControlStateNormal];
         [_surebtn addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -77,6 +74,8 @@
 }
 
 -(void)viewDidLoad{
+    self.navigationController.navigationBar.hidden = YES;
+    
     UIImageView *bgview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HIGHT)];
     bgview.image = [UIImage imageNamed:@"loginbg"];
     [self.view addSubview:bgview];
