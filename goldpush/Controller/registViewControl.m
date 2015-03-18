@@ -29,9 +29,17 @@
         _pstext = [[UITextField alloc] initWithFrame:CGRectMake(140.0f, 140.0f, 180.0f, 40.0f)];
         _pstext.placeholder = @"请输入密码";
         
-        _surebtn = [[UIButton alloc] initWithFrame:CGRectMake((WINDOW_WIDTH - 225.0f)/2.0f, 200.0f, 225.0f, 35.0f)];
+        _surebtn = [[UIButton alloc] initWithFrame:CGRectMake((WINDOW_WIDTH - 225.0f)/2.0f, 250.0f, 225.0f, 35.0f)];
         [_surebtn setImage:[UIImage imageNamed:@"loginbtn"] forState:UIControlStateNormal];
         [_surebtn addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        _remenberBtn = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 25.0f, 25.0f)];
+        [_remenberBtn setImage:[UIImage imageNamed:@"loginselect"] forState:UIControlStateNormal];
+        [_remenberBtn addTarget:self action:@selector(clickRemember) forControlEvents:UIControlEventTouchUpInside];
+        
+        _autoBtn = [[UIButton alloc] initWithFrame:CGRectMake(200.0f, 200.0f, 25.0f, 25.0f)];
+        [_autoBtn setImage:[UIImage imageNamed:@"loginunselect"] forState:UIControlStateNormal] ;
+        [_autoBtn addTarget:self action:@selector(clickAuto) forControlEvents:UIControlEventTouchUpInside];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(getUserProfileSuccess:)
@@ -56,13 +64,12 @@
 }
 
 -(void)getUserProfileSuccess:(NSNotification*) aNotification{
-    //[SVProgressHUD showSuccessWithStatus:@"成功获得设备id"];
     
     NSDictionary *nameDictionary = [aNotification userInfo];
     NSString *strname = [nameDictionary objectForKey:@"name"];
     _regis.userid = strname;
     
-    [self performSelector:@selector(changeText:) withObject:nil afterDelay:1];
+    [self performSelector:@selector(changeText:) withObject:nil afterDelay:2];
 }
 
 -(void)getUserProfileFail:(NSNotification*) aNotification{
@@ -70,7 +77,7 @@
     
     _regis.userid = @"";
     
-    [self performSelector:@selector(changeText:) withObject:nil afterDelay:1];
+    [self performSelector:@selector(changeText:) withObject:nil afterDelay:2];
 }
 
 -(void)viewDidLoad{
@@ -80,11 +87,19 @@
     bgview.image = [UIImage imageNamed:@"loginbg"];
     [self.view addSubview:bgview];
     
+    UILabel *remenberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 100.0f, 30.0f)];
+    remenberLabel.text = @"记住密码";
+    
+    UILabel *autoLabel = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 200.0f, 100.0f, 30.0f)];
+    autoLabel.text = @"自动登录";
+    
     [self.view addSubview:_phonetext];
     [self.view addSubview:_surebtn];
     [self.view addSubview:_userNameLabel];
     [self.view addSubview:_pstext];
     [self.view addSubview:_psLabel];
+    [self.view addSubview:_remenberBtn];
+    [self.view addSubview:_autoBtn];
 }
 
 -(void)registerClick:(id)sender{
@@ -100,7 +115,6 @@
         [SVProgressHUD showWithStatus:@"正在注册。。。"];
         [[registHandler shareInstance] executeRegist:_regis
                                              success:^(id a){
-            
                                                  [[myStorage shareInstance] setRegitsStates:YES];
             [SVProgressHUD showSuccessWithStatus:@"注册成功"];
             messageListViewController *view = [[messageListViewController alloc] init];
@@ -115,7 +129,18 @@
 }
 
 -(void)changeText:(id)sender{
+    if ([_phonetext isFirstResponder] || [_pstext isFirstResponder]) {
+        return;
+    }
     [_phonetext becomeFirstResponder];
+}
+
+-(void)clickRemember{
+    
+}
+
+-(void)clickAuto{
+    
 }
 
 @end

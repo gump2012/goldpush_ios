@@ -18,5 +18,7 @@
     UITextField *_pstext;
     UIButton *_surebtn;
     registModel *_regis;
+    UIButton *_remenberBtn;
+    UIButton *_autoBtn;
 }
 @end
