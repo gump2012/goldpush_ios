@@ -28,6 +28,7 @@
         
         _pstext = [[UITextField alloc] initWithFrame:CGRectMake(140.0f, 140.0f, 180.0f, 40.0f)];
         _pstext.placeholder = @"请输入密码";
+        _pstext.secureTextEntry = YES;
         
         _surebtn = [[UIButton alloc] initWithFrame:CGRectMake((WINDOW_WIDTH - 225.0f)/2.0f, 250.0f, 225.0f, 35.0f)];
         [_surebtn setImage:[UIImage imageNamed:@"loginbtn"] forState:UIControlStateNormal];
