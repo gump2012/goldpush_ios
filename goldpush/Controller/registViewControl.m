@@ -10,7 +10,7 @@
 #import "SVProgressHUD.h"
 #import "registModel.h"
 #import "registHandler.h"
-#import "messageListViewController.h"
+#import "operateViewController.h"
 
 @implementation registViewControl
 
@@ -89,7 +89,7 @@
                                                      
                                                      [[myStorage shareInstance] setUserName:_regis.phonenum];
                                                      [[myStorage shareInstance] setUserPassword:_regis.ps];
-                                                     messageListViewController *view = [[messageListViewController alloc] init];
+                                                     operateViewController *view = [[operateViewController alloc] init];
                                                      [self.navigationController pushViewController:view animated:YES];
                                                  }
                                                   failed:^(id a){
@@ -164,7 +164,7 @@
                                                  
                                                  [[myStorage shareInstance] setUserName:_regis.phonenum];
                                                  [[myStorage shareInstance] setUserPassword:_regis.ps];
-                                                 messageListViewController *view = [[messageListViewController alloc] init];
+                                                 operateViewController *view = [[operateViewController alloc] init];
                                                  [self.navigationController pushViewController:view animated:YES];
                                              }
                                               failed:^(id a){

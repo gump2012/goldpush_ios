@@ -62,6 +62,7 @@
 		6F58293C1A6664A2001B6225 /* getLastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F58293B1A6664A2001B6225 /* getLastMessage.m */; };
 		6F6163141A47B80C005A03D3 /* pushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163131A47B80C005A03D3 /* pushHandler.m */; };
 		6F6163171A47BE08005A03D3 /* myStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6163161A47BE08005A03D3 /* myStorage.m */; };
+		6F810DEE1ABAC8FC00CB9283 /* operateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F810DED1ABAC8FC00CB9283 /* operateViewController.m */; };
 		6FF71B831A884A920022AEC9 /* messageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF71B821A884A920022AEC9 /* messageInfoCell.m */; };
 		CAAE283079962BA5BE55BD71 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB199E6346C1EA247319435B /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -191,6 +192,8 @@
 		6F6163131A47B80C005A03D3 /* pushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pushHandler.m; path = Handler/pushHandler.m; sourceTree = "<group>"; };
 		6F6163151A47BE08005A03D3 /* myStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myStorage.h; path = Storage/myStorage.h; sourceTree = "<group>"; };
 		6F6163161A47BE08005A03D3 /* myStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myStorage.m; path = Storage/myStorage.m; sourceTree = "<group>"; };
+		6F810DEC1ABAC8FC00CB9283 /* operateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = operateViewController.h; path = Controller/operateViewController.h; sourceTree = "<group>"; };
+		6F810DED1ABAC8FC00CB9283 /* operateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = operateViewController.m; path = Controller/operateViewController.m; sourceTree = "<group>"; };
 		6FF71B811A884A920022AEC9 /* messageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messageInfoCell.h; path = View/messageinfo/messageInfoCell.h; sourceTree = "<group>"; };
 		6FF71B821A884A920022AEC9 /* messageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messageInfoCell.m; path = View/messageinfo/messageInfoCell.m; sourceTree = "<group>"; };
 		B60B57C18BFC14E3A8A8BB53 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 				335FDF411A3BEA96002BDA05 /* ViewController.m */,
 				6F2B2A391A6520C90026CFDC /* messageListViewController.h */,
 				6F2B2A3A1A6520C90026CFDC /* messageListViewController.m */,
+				6F810DEC1ABAC8FC00CB9283 /* operateViewController.h */,
+				6F810DED1ABAC8FC00CB9283 /* operateViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -743,6 +748,7 @@
 				339A327A1A3D7A7E00E0316A /* SVProgressHUD.m in Sources */,
 				6F2B2A381A6504D90026CFDC /* messagedb.m in Sources */,
 				335FDF431A3BEA96002BDA05 /* ViewController.m in Sources */,
+				6F810DEE1ABAC8FC00CB9283 /* operateViewController.m in Sources */,
 				339A32801A3D884200E0316A /* registHandler.m in Sources */,
 				33849A341A3D1B0900AC121E /* ASICloudFilesRequest.m in Sources */,
 				33849A3D1A3D1B4000AC121E /* baseRequest.m in Sources */,
