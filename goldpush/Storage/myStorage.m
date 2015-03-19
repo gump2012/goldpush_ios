@@ -23,7 +23,12 @@ static myStorage * shareins = nil;
 
 -(void)setDefaultValue{
     NSDictionary *defaultValues = [NSDictionary dictionaryWithObjectsAndKeys: @"", @"userid",
-                                   [NSNumber numberWithBool:NO],@"registstate",nil];
+                                   [NSNumber numberWithBool:NO],@"registstate",
+                                   [NSNumber numberWithBool:NO],@"rememberps",
+                                   [NSNumber numberWithBool:NO],@"autologin",
+                                   @"", @"username",
+                                   @"",@"userps",
+                                   nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 
@@ -43,6 +48,40 @@ static myStorage * shareins = nil;
 -(BOOL)registStates{
     BOOL bsuccess = [[NSUserDefaults standardUserDefaults] boolForKey:@"registstate"];
     return bsuccess;
+}
+
+-(void)setRememberPS:(BOOL)bRemember{
+    [[NSUserDefaults standardUserDefaults] setBool:bRemember forKey:@"rememberps"];
+}
+
+-(BOOL)rememberPS{
+    BOOL bsuccess = [[NSUserDefaults standardUserDefaults] boolForKey:@"rememberps"];
+    return bsuccess;
+}
+
+-(void)setAutoLogin:(BOOL)bauto{
+     [[NSUserDefaults standardUserDefaults] setBool:bauto forKey:@"autologin"];
+}
+
+-(BOOL)autoLogin{
+    BOOL bsuccess = [[NSUserDefaults standardUserDefaults] boolForKey:@"autologin"];
+    return bsuccess;
+}
+
+-(void)setUserName:(NSString *)strname{
+    [[NSUserDefaults standardUserDefaults] setObject:strname forKey:@"username"];
+}
+-(NSString *)userName{
+    NSString *str = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+    return str;
+}
+
+-(void)setUserPassword:(NSString *)strps{
+     [[NSUserDefaults standardUserDefaults] setObject:strps forKey:@"userps"];
+}
+-(NSString *)userPassword{
+    NSString *str = [[NSUserDefaults standardUserDefaults] stringForKey:@"userps"];
+    return str;
 }
 
 @end

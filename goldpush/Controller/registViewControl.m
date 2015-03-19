@@ -33,12 +33,20 @@
         [_surebtn setImage:[UIImage imageNamed:@"loginbtn"] forState:UIControlStateNormal];
         [_surebtn addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        _remenberBtn = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 25.0f, 25.0f)];
-        [_remenberBtn setImage:[UIImage imageNamed:@"loginselect"] forState:UIControlStateNormal];
+        _remenberBtn = [[UIButton alloc] initWithFrame:CGRectMake(20.0f, 200.0f, 25.0f, 25.0f)];
+        if ([[myStorage shareInstance] rememberPS]) {
+            [_remenberBtn setImage:[UIImage imageNamed:@"loginselect"] forState:UIControlStateNormal];
+        }else{
+            [_remenberBtn setImage:[UIImage imageNamed:@"loginunselect"] forState:UIControlStateNormal];
+        }
         [_remenberBtn addTarget:self action:@selector(clickRemember) forControlEvents:UIControlEventTouchUpInside];
         
-        _autoBtn = [[UIButton alloc] initWithFrame:CGRectMake(200.0f, 200.0f, 25.0f, 25.0f)];
-        [_autoBtn setImage:[UIImage imageNamed:@"loginunselect"] forState:UIControlStateNormal] ;
+        _autoBtn = [[UIButton alloc] initWithFrame:CGRectMake(170.0f, 200.0f, 25.0f, 25.0f)];
+        if ([[myStorage shareInstance] autoLogin]) {
+            [_autoBtn setImage:[UIImage imageNamed:@"loginselect"] forState:UIControlStateNormal] ;
+        }else {
+            [_autoBtn setImage:[UIImage imageNamed:@"loginunselect"] forState:UIControlStateNormal] ;
+        }
         [_autoBtn addTarget:self action:@selector(clickAuto) forControlEvents:UIControlEventTouchUpInside];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -52,8 +60,6 @@
                                                    object:nil];
         
         _regis = [[registModel alloc] init];
-        
-        self.title = @"注册";
     }
     
     return self;
@@ -69,15 +75,36 @@
     NSString *strname = [nameDictionary objectForKey:@"name"];
     _regis.userid = strname;
     
-    [self performSelector:@selector(changeText:) withObject:nil afterDelay:2];
+    if ([[myStorage shareInstance]  autoLogin]) {
+        _regis.phonenum = [[myStorage shareInstance] userName];
+        _regis.ps = [[myStorage shareInstance] userPassword];
+        if (_regis.phonenum.length > 0 && _regis.ps.length > 0) {
+            [_phonetext resignFirstResponder];
+            [_pstext resignFirstResponder];
+            [SVProgressHUD showWithStatus:@"正在登录。。。"];
+            [[registHandler shareInstance] executeRegist:_regis
+                                                 success:^(id a){
+                                                     [[myStorage shareInstance] setRegitsStates:YES];
+                                                     [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                                                     
+                                                     [[myStorage shareInstance] setUserName:_regis.phonenum];
+                                                     [[myStorage shareInstance] setUserPassword:_regis.ps];
+                                                     messageListViewController *view = [[messageListViewController alloc] init];
+                                                     [self.navigationController pushViewController:view animated:YES];
+                                                 }
+                                                  failed:^(id a){
+                                                      [[myStorage shareInstance] setRegitsStates:NO];
+                                                      [SVProgressHUD showErrorWithStatus:@"登录失败"];
+                                                  }
+             ];
+        }
+    }
 }
 
 -(void)getUserProfileFail:(NSNotification*) aNotification{
     [SVProgressHUD showErrorWithStatus:@"网络故障，请检查您的网络"];
     
     _regis.userid = @"";
-    
-    [self performSelector:@selector(changeText:) withObject:nil afterDelay:2];
 }
 
 -(void)viewDidLoad{
@@ -85,9 +112,13 @@
     
     UIImageView *bgview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HIGHT)];
     bgview.image = [UIImage imageNamed:@"loginbg"];
+    bgview.userInteractionEnabled = YES;
+    UITapGestureRecognizer* singleRecognizer;
+    singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickbg:)];
+    [bgview addGestureRecognizer:singleRecognizer];
     [self.view addSubview:bgview];
     
-    UILabel *remenberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 100.0f, 30.0f)];
+    UILabel *remenberLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 200.0f, 100.0f, 30.0f)];
     remenberLabel.text = @"记住密码";
     
     UILabel *autoLabel = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 200.0f, 100.0f, 30.0f)];
@@ -100,30 +131,46 @@
     [self.view addSubview:_psLabel];
     [self.view addSubview:_remenberBtn];
     [self.view addSubview:_autoBtn];
+    [self.view addSubview:remenberLabel];
+    [self.view addSubview:autoLabel];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    
+    _phonetext.text = [[myStorage shareInstance] userName];
+    if ([[myStorage shareInstance] rememberPS]) {
+        _pstext.text = [[myStorage shareInstance] userPassword];
+    }else{
+        _pstext.text = @"";
+    }
 }
 
 -(void)registerClick:(id)sender{
     if (_phonetext.text.length == 0 || _pstext.text.length == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入用户名或密码" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        [alert addButtonWithTitle:@"Yes"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入用户名或密码" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
         [alert show];
     }else{
         _regis.phonenum = _phonetext.text;
         _regis.ps = _pstext.text;
         [_phonetext resignFirstResponder];
         [_pstext resignFirstResponder];
-        [SVProgressHUD showWithStatus:@"正在注册。。。"];
+        [SVProgressHUD showWithStatus:@"正在登录。。。"];
         [[registHandler shareInstance] executeRegist:_regis
                                              success:^(id a){
                                                  [[myStorage shareInstance] setRegitsStates:YES];
-            [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-            messageListViewController *view = [[messageListViewController alloc] init];
-            [self.navigationController pushViewController:view animated:YES];
-    }
+                                                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                                                 
+                                                 [[myStorage shareInstance] setUserName:_regis.phonenum];
+                                                 [[myStorage shareInstance] setUserPassword:_regis.ps];
+                                                 messageListViewController *view = [[messageListViewController alloc] init];
+                                                 [self.navigationController pushViewController:view animated:YES];
+                                             }
                                               failed:^(id a){
-            [[myStorage shareInstance] setRegitsStates:NO];
-            [SVProgressHUD showErrorWithStatus:@"注册失败"];
-    }
+                                                  [[myStorage shareInstance] setRegitsStates:NO];
+                                                  [SVProgressHUD showErrorWithStatus:@"登录失败"];
+                                              }
          ];
     }
 }
@@ -136,11 +183,31 @@
 }
 
 -(void)clickRemember{
-    
+    if ([[myStorage shareInstance] rememberPS]) {
+        [_remenberBtn setImage:[UIImage imageNamed:@"loginunselect"] forState:UIControlStateNormal];
+        [[myStorage shareInstance] setRememberPS:NO];
+    }else{
+        [_remenberBtn setImage:[UIImage imageNamed:@"loginselect"] forState:UIControlStateNormal];
+        [[myStorage shareInstance] setRememberPS:YES];
+    }
 }
 
 -(void)clickAuto{
-    
+    if ([[myStorage shareInstance] autoLogin]) {
+        [_autoBtn setImage:[UIImage imageNamed:@"loginunselect"] forState:UIControlStateNormal];
+        [[myStorage shareInstance] setAutoLogin:NO];
+    }else{
+        [_autoBtn setImage:[UIImage imageNamed:@"loginselect"] forState:UIControlStateNormal];
+        [[myStorage shareInstance] setAutoLogin:YES];
+    }
+}
+
+- (void)clickbg:(UISwipeGestureRecognizer*)recognizer {
+    if ([_phonetext isFirstResponder]) {
+        [_phonetext resignFirstResponder];
+    }else if([_pstext isFirstResponder]){
+        [_pstext resignFirstResponder];
+    }
 }
 
 @end

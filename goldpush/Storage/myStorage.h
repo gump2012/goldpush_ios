@@ -17,7 +17,19 @@
 -(void)saveUserID:(NSString *)struid;
 -(NSString *)getUserID;
 
+-(void)setUserName:(NSString *)strname;
+-(NSString *)userName;
+
+-(void)setUserPassword:(NSString *)strps;
+-(NSString *)userPassword;
+
 //regist
 -(void)setRegitsStates:(BOOL)bSuccess;
 -(BOOL)registStates;
+
+-(void)setRememberPS:(BOOL)bRemember;
+-(BOOL)rememberPS;
+
+-(void)setAutoLogin:(BOOL)bauto;
+-(BOOL)autoLogin;
 @end
